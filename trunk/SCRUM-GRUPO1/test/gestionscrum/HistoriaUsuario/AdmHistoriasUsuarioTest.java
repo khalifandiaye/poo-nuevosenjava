@@ -1,4 +1,7 @@
-package upc.edu.pe;
+package gestionscrum.HistoriaUsuario;
+
+import gestionscrum.HistoriaUsuario.AdmHistoriasUsuario;
+import gestionscrum.HistoriaUsuario.HistoriaUsuario;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

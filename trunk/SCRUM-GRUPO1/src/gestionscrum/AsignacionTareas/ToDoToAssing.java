@@ -1,4 +1,4 @@
-package AsignacionTareas;
+package gestionscrum.AsignacionTareas;
 
 import java.util.ArrayList;
 

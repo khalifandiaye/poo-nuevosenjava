@@ -1,4 +1,4 @@
-package upc.edu.pe;
+package gestionscrum.HistoriaUsuario;
 /**
  *
  * @author pcsiecon

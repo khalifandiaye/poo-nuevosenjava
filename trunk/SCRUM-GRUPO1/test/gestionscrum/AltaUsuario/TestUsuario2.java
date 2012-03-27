@@ -1,11 +1,11 @@
-package test;
+package gestionscrum.AltaUsuario;
 
 import static org.junit.Assert.*;
+import gestionscrum.AltaUsuario.Usuario;
+import gestionscrum.AltaUsuario.Usuario2;
 
 import org.junit.Test;
 
-import usuario.Usuario;
-import usuario.Usuario2;
 
 
 public class TestUsuario2 {

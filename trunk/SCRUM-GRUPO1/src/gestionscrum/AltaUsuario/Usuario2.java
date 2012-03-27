@@ -1,4 +1,5 @@
-package usuario;
+package gestionscrum.AltaUsuario;
+
 
 import java.util.ArrayList;
 

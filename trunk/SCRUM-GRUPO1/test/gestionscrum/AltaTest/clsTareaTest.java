@@ -1,4 +1,8 @@
-package appscrumhl;
+package gestionscrum.AltaTest;
+import gestionscrum.AltaTareas.clsArrHistoriaUsuario;
+import gestionscrum.AltaTareas.clsHistoriaUsuario;
+import gestionscrum.AltaTareas.clsTarea;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 

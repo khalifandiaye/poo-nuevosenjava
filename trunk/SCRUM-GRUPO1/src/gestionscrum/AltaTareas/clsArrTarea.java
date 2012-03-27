@@ -1,4 +1,4 @@
-package appscrumhl;
+package gestionscrum.AltaTareas;
 
 public class clsArrTarea {
 	private String IDTarea;

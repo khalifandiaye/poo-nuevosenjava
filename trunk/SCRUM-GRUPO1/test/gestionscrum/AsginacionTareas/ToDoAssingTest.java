@@ -1,6 +1,8 @@
-package AsignacionTareas;
+package gestionscrum.AsginacionTareas;
 
 import static org.junit.Assert.*;
+
+import gestionscrum.AsignacionTareas.ToDoToAssing;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
