@@ -1,4 +1,4 @@
-package usuario;
+package gestionscrum.AltaUsuario;
 
 public class Usuario {
     private String email; // Correo/Identificador

@@ -1,6 +1,7 @@
-package upc.edu.pe;
+package gestionscrum.HistoriaUsuario;
 
 import java.util.ArrayList;
+
 
 /**
  *
