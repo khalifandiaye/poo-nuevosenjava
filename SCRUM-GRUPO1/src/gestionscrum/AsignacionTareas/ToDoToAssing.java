@@ -1,8 +1,5 @@
 package gestionscrum.AsignacionTareas;
 
-import java.util.ArrayList;
-
-
 public class ToDoToAssing {
 	
 	private String codProj;
