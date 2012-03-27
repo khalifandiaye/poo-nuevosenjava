@@ -1,3 +1,5 @@
+package AsignacionTareas;
+
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Array;

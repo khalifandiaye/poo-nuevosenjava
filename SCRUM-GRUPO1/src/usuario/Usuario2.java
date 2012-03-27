@@ -15,8 +15,6 @@ public class Usuario2 {
 	        if (noExisteEmail(email)) {
 	            Usuario nuevoUsuario = new Usuario(email, fname, lname, pass);
 				usuarios.add(nuevoUsuario);
-	            if (email == "" || fname == "" || lname == "" || pass == "") 
-	            	System.out.println("Error al registrar usuario");
 				}
 	            
 	        }

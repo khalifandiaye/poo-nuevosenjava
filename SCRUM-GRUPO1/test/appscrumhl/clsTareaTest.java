@@ -19,7 +19,7 @@ public class clsTareaTest {
 		String IDHisUsu="HU00001";
 		String Descripcion="Tarea 1";
 		String Fecha="22/03/2012";
-		double PorcentajeAvance=24.6;
+		double PorcentajeAvance=0;
 
 		//aca se registra una historia para la sgte prueba
 		clsHistoriaUsuario objHisUsu=new clsHistoriaUsuario();
@@ -53,7 +53,7 @@ public class clsTareaTest {
 		objHisUsu.InsertarHistoriaUsuario(IDHisUsu, "Historia HU00002", "23/03/2012");
 	
 		//se carga arreglo con la historia HU00003 (No existe)
-		String IDHisUsuaRegistrar="HU00003";
+		String IDHisUsuaRegistrar="HU00002";
 		clsArrHistoriaUsuario historia=objHisUsu.ConsultarHistoriaUsuario(IDHisUsuaRegistrar);
 		//assertTrue(historia.getIDHisUsu().equals(IDHisUsuaRegistrar));
 		
