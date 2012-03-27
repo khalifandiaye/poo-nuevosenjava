@@ -4,10 +4,6 @@ import static org.junit.Assert.*;
 
 import gestionscrum.AsignacionTareas.ToDoToAssing;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Date;
-
 import org.junit.Test;
 
 
