@@ -69,5 +69,66 @@ public class clsTareaTest {
 		assertTrue(objTar.InsertarTarea("TA0003", IDHisUsuaRegistrar, "Tarea 3", "23/03/2012", 2,historia));//ERROR porque historia HU00003 NO EXISTE
 	 
 	}
+	
+	@Test
+	public void DebeIngresarDatosMandatorios(){
+		String IDTarea="TA0001";
+		String IDHisUsu="HU00001";
+		String Descripcion="";
+		String Fecha="30/03/2012";
+		double PorcentajeAvance=0;
+
+		//aca se registra una historia para la sgte prueba
+		clsHistoriaUsuario objHisUsu=new clsHistoriaUsuario();
+		objHisUsu.InsertarHistoriaUsuario(IDHisUsu, "Historia X", "30/03/2012");
+
+		//se carga arreglo con la historia HU00003 (No existe)
+		String IDHisUsuaRegistrar="HU00003";
+		clsArrHistoriaUsuario historia=objHisUsu.ConsultarHistoriaUsuario(IDHisUsuaRegistrar);
+		
+		clsTarea objTar=new clsTarea();
+			
+		
+		objTar.InsertarTarea(IDTarea, IDHisUsu, Descripcion, Fecha, PorcentajeAvance,historia);
+		
+		String strMensaje=objTar.strValidaDatos(IDTarea, IDHisUsu, Descripcion, Fecha, PorcentajeAvance);
+		if (strMensaje!=null){
+			System.out.println(strMensaje);
+			assertNull(strMensaje);
+		}
+		else
+			objTar.InsertarTarea(IDTarea, IDHisUsu, Descripcion, Fecha, 0,historia);
+				
+	}
+	
+	@Test
+	public void DebeIngresarPorcentajeMayoraCero(){
+		String IDTarea="TA0001";
+		String IDHisUsu="HU00001";
+		String Descripcion="";
+		String Fecha="30/03/2012";
+		double PorcentajeAvance=-5;
+
+		//aca se registra una historia para la sgte prueba
+		clsHistoriaUsuario objHisUsu=new clsHistoriaUsuario();
+		objHisUsu.InsertarHistoriaUsuario(IDHisUsu, "Historia X", "30/03/2012");
+
+		//se carga arreglo con la historia HU00003 (No existe)
+		String IDHisUsuaRegistrar="HU00003";
+		clsArrHistoriaUsuario historia=objHisUsu.ConsultarHistoriaUsuario(IDHisUsuaRegistrar);
+				
+		clsTarea objTar=new clsTarea();
+		
+		boolean blnPorcentaje = objTar.blnValidaPorcentaje(PorcentajeAvance);
+				
+		if (blnPorcentaje==false){
+			System.out.println("Debe ingresar un pocentaje de avance mayor a cero");
+			assertTrue(blnPorcentaje);
+		}
+			
+		else
+			objTar.InsertarTarea(IDTarea, IDHisUsu, Descripcion, Fecha, 0,historia);
+				
+	}
 
 }
