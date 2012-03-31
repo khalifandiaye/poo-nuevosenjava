@@ -52,5 +52,32 @@ public class clsTarea {
         return null;
 		
 	}
+	
+	public String strValidaDatos(String IDTarea, String IDHisUsu, String Descripcion, String Fecha, double PorcentajeAvance){
+		
+		if (Descripcion==""){
+			return "Debe ingresar Descripcion";
+			
+		}
+		
+		if (IDHisUsu==""){
+			return "Debe ingresar ID de Historia de Usuario";
+			
+		}
+		
+		if (Fecha==""){
+			return "Debe ingresar Fecha";
+			
+		}
+		return null;
+	}
+	
+	public boolean blnValidaPorcentaje(double PorcentajeAvance){
+		
+		if (PorcentajeAvance<0)
+			return false;
+		
+		return true;
+	}
     
 }
