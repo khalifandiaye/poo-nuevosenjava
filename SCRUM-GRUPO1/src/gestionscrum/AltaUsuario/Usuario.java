@@ -1,7 +1,7 @@
 package gestionscrum.AltaUsuario;
 
 public class Usuario {
-    private String email; // Correo/Identificador
+    private String email; // Correo/Identificado r
     private String fname; // Nombre
     private String lname; // Apellido
     private String pass; // Contraseña
@@ -12,6 +12,7 @@ public class Usuario {
         this.fname = fname;
         this.lname = lname;
         this.pass = pass;
+
         }
     public String get_email() 
     	{
@@ -29,5 +30,5 @@ public class Usuario {
     	{
         	return pass;
     	}
-    
+        
 }
