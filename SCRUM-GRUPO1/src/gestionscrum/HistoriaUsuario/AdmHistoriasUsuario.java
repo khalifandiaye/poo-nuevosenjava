@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author pcsiecon
+ * @author Evelyn Córdova
  */
 public class AdmHistoriasUsuario {
 
@@ -16,9 +16,9 @@ public class AdmHistoriasUsuario {
         historias = new ArrayList<HistoriaUsuario>();
     }
 
-    public void registrarHistoriaUsuario(String codigo, String descripcion, String fecha) {
+    public void registrarHistoriaUsuario(String codigo, String descripcion, String fecha, String usuario, String estado) {
         // Crear la nueva historia
-        HistoriaUsuario historia = new HistoriaUsuario(codigo, descripcion, fecha);
+        HistoriaUsuario historia = new HistoriaUsuario(codigo, descripcion, fecha, usuario, estado);
         // Insertarlo en la colección
         historias.add(historia);
     }
