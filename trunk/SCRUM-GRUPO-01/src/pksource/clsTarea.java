@@ -9,6 +9,8 @@ public class clsTarea {
 	private int iDuracionHoras;
 	private String sEstado;
 	private String sTipo;
+	private int iIDTareaPadre;
+	private float fPorcentajeAvance;
 	
 	private String dFechaCreacion;
 	private String dFechaModificacion;
@@ -16,7 +18,13 @@ public class clsTarea {
 	private int iIDUsuarioModificacion;
 
 	
-	public clsTarea(int viIDTarea, int viIDHistoria, String vsDescripcion, String vdFechaInicio, String vdFechaFin, int viDuracionHoras, String vsEstado, String vsTipo, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
+	public clsTarea(int viIDTarea, int viIDHistoria, 
+			String vsDescripcion, String vdFechaInicio, String vdFechaFin, 
+			int viDuracionHoras, String vsEstado, String vsTipo,
+			int viIDTareaPadre, float vfPorcentajeAvance,
+			String vdFechaCreacion, 
+			String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
+		
 		this.iIDTarea=viIDTarea;
 		this.iIDHistoria=viIDHistoria;
 		this.sDescripcion=vsDescripcion;
@@ -25,10 +33,13 @@ public class clsTarea {
 		this.iDuracionHoras=viDuracionHoras;
 		this.sEstado=vsEstado;
 		this.sTipo=vsTipo;
+		this.iIDTareaPadre=viIDTareaPadre;
+		this.fPorcentajeAvance=vfPorcentajeAvance;
+		
 		this.dFechaCreacion=vdFechaCreacion;
 		this.dFechaModificacion =vdFechaModificacion;
-		this.dFechaCreacion=vdFechaCreacion;
-		this.dFechaCreacion=vdFechaCreacion;
+		this.iIDUsuarioCreacion=viIDUsuarioCreacion;
+		this.iIDUsuarioModificacion=viIDUsuarioModificacion;
 		
 		
 	}
@@ -58,6 +69,12 @@ public class clsTarea {
 		return sTipo;
 	}
 	
+	public int get_iIDTareaPadre(){
+		return iIDTareaPadre;
+	}
+	public float fPorcentajeAvance(){
+		return fPorcentajeAvance;
+	}
 	public String get_dFechaCreacion(){
 		return dFechaCreacion;
 	}
