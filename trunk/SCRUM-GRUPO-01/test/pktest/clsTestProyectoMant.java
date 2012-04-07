@@ -28,6 +28,7 @@ public class clsTestProyectoMant {
         //Assert
         clsProyecto oProyecto = oProyectoMant.faBuscarPk(viIDProyecto);
         assertNotNull(oProyecto);
+        
            }
 
 }

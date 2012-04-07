@@ -1,6 +1,6 @@
 package pksource;
 
-public class clsHistoria extends clsProyecto{
+public class clsHistoria {
 
 		// TODO Auto-generated constructor stub
 	} 
