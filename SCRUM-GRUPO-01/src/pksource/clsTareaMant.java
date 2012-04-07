@@ -9,14 +9,22 @@ public class clsTareaMant {
 		tareas = new ArrayList<clsTarea>();		
 	}
 	
-	public void pAgregar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+	public void pAgregar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,
+			String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
+			int viIDTareaPadre, float vfPorcentajeAvance, 
+			String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+		
 		if (faBuscar(vsDescripcion) == null){		
-			clsTarea nuevaTarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionHoras,vsEstado,vsTipo,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
+			clsTarea nuevaTarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
+					vdFechaFin,viDuracionHoras,vsEstado,vsTipo,
+					viIDTareaPadre,vfPorcentajeAvance,
+					vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
+			
 			tareas.add(nuevaTarea);
 			System.out.println("Tarea Agregada");
 		}		
 		else
-			System.out.println("Tarea No Agregado");
+			System.out.println("Tarea No Agregada");
 
 	}
 	
@@ -47,12 +55,12 @@ public class clsTareaMant {
 	
 	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
 		if (faBuscarPkPos(viIDTarea) != -1) {
-			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionHoras,vsEstado,vsTipo,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
+			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionHoras,vsEstado,vsTipo,viIDUsuarioModificacion, viIDUsuarioModificacion, vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
 			tareas.set(faBuscarPkPos(viIDTarea), tarea);
-			System.out.println("Tarea Editado");
+			System.out.println("Tarea Editada");
 		}
 		else
-			System.out.println("Tara No Editado");		
+			System.out.println("Tara No Editada");		
 	}
 
 	public void pEliminar(int viIDTarea){
@@ -61,6 +69,6 @@ public class clsTareaMant {
 			System.out.println("Tarea Borrada");
 		}
 		else
-			System.out.println("Tarea No Borrado");		
+			System.out.println("Tarea No Borrada");		
 	}
 }
