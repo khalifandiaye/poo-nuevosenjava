@@ -10,9 +10,9 @@ public class clsSprintMant {
 		sprints = new ArrayList<clsSprint>();
 	}
 	
-	public void pAgregar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
+	public void pAgregar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
 		if (faBuscar(vsDescripcion) == null){		
-			clsSprint nuevoSprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
+			clsSprint nuevoSprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
 			sprints.add(nuevoSprint);
 			System.out.println("Sprint Agregado");
 		}		
@@ -29,9 +29,9 @@ public class clsSprintMant {
 			System.out.println("Sprint No Borrado");		
 	}
 	
-	public void pEditar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
+	public void pEditar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
 		if (faBuscarPkPos(viIDSprint) != -1) {
-			clsSprint sprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
+			clsSprint sprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
 			sprints.set(faBuscarPkPos(viIDSprint),sprint);
 			System.out.println("Sprint Editado");
 		}
