@@ -72,14 +72,14 @@ public class clsTarea {
 	public int get_iIDTareaPadre(){
 		return iIDTareaPadre;
 	}
-	public float fPorcentajeAvance(){
+	public float get_fPorcentajeAvance(){
 		return fPorcentajeAvance;
 	}
 	public String get_dFechaCreacion(){
 		return dFechaCreacion;
 	}
 
-	public String get_sFechaModificacion(){
+	public String get_dFechaModificacion(){
 		return dFechaModificacion;
 	}
 
