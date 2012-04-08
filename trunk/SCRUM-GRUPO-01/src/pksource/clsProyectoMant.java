@@ -29,9 +29,11 @@ public class clsProyectoMant {
 			System.out.println("Proyecto No Borrado");		
 	}
 	
-	public void pEditar(int viIDProyecto, String vsDescripcion, String vsCliente, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioMoficacion){
+	public void pEditar(int viIDProyecto, String vsDescripcion, String vsCliente, String vdFechaModificacion, int viIDUsuarioMoficacion){
 		if (faBuscarPkPos(viIDProyecto) != -1) {
-			clsProyecto proyecto = new clsProyecto(viIDProyecto,vsDescripcion,vsCliente,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioMoficacion);
+			clsProyecto oProyecto_orig;
+			oProyecto_orig = faBuscarPk(viIDProyecto); 
+			clsProyecto proyecto = new clsProyecto(oProyecto_orig.get_iIDProyecto(),vsDescripcion,vsCliente,oProyecto_orig.get_dFechaCreacion(),vdFechaModificacion,oProyecto_orig.get_iIDUsuarioCreacion(),viIDUsuarioMoficacion);
 			proyectos.set(faBuscarPkPos(viIDProyecto),proyecto);
 			System.out.println("Proyecto Editado");
 		}
@@ -57,7 +59,7 @@ public class clsProyectoMant {
 		int i = -1;
 		for (clsProyecto proyecto  : proyectos)
 		{
-        	i = i++;
+        	i ++;
             if (proyecto.get_iIDProyecto() == viIDProyecto)
                 return i;
 		}
