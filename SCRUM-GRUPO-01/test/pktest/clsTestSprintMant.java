@@ -25,13 +25,15 @@ public class clsTestSprintMant {
     	String vdFechaInicio = "09/04/2012";
     	String vdFechaFin = "04/05/2012";
     	int viDuracionDias = 20;
+    	String vsEstado = "00";   //00:Creado//01:Asignado//02:En Progreso//03:Finalizado
+    	double vdPorcentajeAvance=0;
     	int viIDUsuarioCreacion = 3;
     	String vdFechaCreacion = "09/04/2012";
     	int viIDUsuarioModificacion = 3; 
     	String vdFechaModificacion = "";
     	clsSprintMant oSprintMant = new clsSprintMant();
         // Act
-        oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);    
+        oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);    
         //Assert
         clsSprint oSprint = oSprintMant.faBuscarPk(viIDSprint);
         assertNotNull(oSprint);
@@ -58,6 +60,8 @@ public class clsTestSprintMant {
 	    String vdFechaInicio = "07/05/2012";
 	    String vdFechaFin = "01/06/2012";
 	    int viDuracionDias = 20;
+	    String vsEstado = "00";   //00:Creado//01:Asignado//02:En Progreso//03:Finalizado
+    	double vdPorcentajeAvance=0;
 	    int viIDUsuarioCreacion = 3;
 	    String vdFechaCreacion = "09/04/2012";
 	    int viIDUsuarioModificacion = 3; 
@@ -68,6 +72,8 @@ public class clsTestSprintMant {
 	    String vdFechaInicio2 = "07/05/2012";
 	    String vdFechaFin2 = "01/06/2012";
 	    int viDuracionDias2 = 20;
+	    String vsEstado2 = "00";   //00:Creado//01:Asignado//02:En Progreso//03:Finalizado
+    	double vdPorcentajeAvance2=0;
 	    int viIDUsuarioCreacion2 = 3;
 	    String vdFechaCreacion2 = "09/04/2012";
 	    int viIDUsuarioModificacion2 = 3; 
@@ -75,8 +81,8 @@ public class clsTestSprintMant {
 	    	
 	    clsSprintMant oSprintMant = new clsSprintMant();
 	    // Act
-	    oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion); 
-	    oSprintMant.pAgregar(viIDSprint2,vsDescripcion2,vdFechaInicio2,vdFechaFin2,viDuracionDias2,viIDUsuarioCreacion2,vdFechaCreacion2,viIDUsuarioModificacion2,vdFechaModificacion2);    
+	    oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion); 
+	    oSprintMant.pAgregar(viIDSprint2,vsDescripcion2,vdFechaInicio2,vdFechaFin2,viDuracionDias2,vsEstado2,vdPorcentajeAvance2,viIDUsuarioCreacion2,vdFechaCreacion2,viIDUsuarioModificacion2,vdFechaModificacion2);    
 	    //Assert
 	    oSprintMant.pEliminar(viIDSprint);  
 	    // oSprintMant.faBuscarPk(viIDSprint);
@@ -109,6 +115,8 @@ public class clsTestSprintMant {
 	    String vdFechaInicio = "07/05/2012";
 	    String vdFechaFin = "01/06/2012";
 	    int viDuracionDias = 20;
+	    String vsEstado = "00";   //00:Creado//01:Asignado//02:En Progreso//03:Finalizado
+    	double vdPorcentajeAvance=0;
 	    int viIDUsuarioCreacion = 3;
 	    String vdFechaCreacion = "09/04/2012";
 	    int viIDUsuarioModificacion = 3; 
@@ -119,6 +127,8 @@ public class clsTestSprintMant {
 	    String vdFechaInicio2 = "07/05/2012";
 	    String vdFechaFin2 = "01/06/2012";
 	    int viDuracionDias2 = 20;
+	    String vsEstado2 = "00";   //00:Creado//01:Asignado//02:En Progreso//03:Finalizado
+    	double vdPorcentajeAvance2=0;
 	    int viIDUsuarioCreacion2 = 3;
 	    String vdFechaCreacion2 = "09/04/2012";
 	    int viIDUsuarioModificacion2 = 3; 
@@ -126,8 +136,8 @@ public class clsTestSprintMant {
 	    	
 	    clsSprintMant oSprintMant = new clsSprintMant();
 	    
-	    oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion); 
-	    oSprintMant.pEditar(viIDSprint2,vsDescripcion2,vdFechaInicio2,vdFechaFin2,viDuracionDias2,viIDUsuarioCreacion2,vdFechaCreacion2,viIDUsuarioModificacion2,vdFechaModificacion2);    
+	    oSprintMant.pAgregar(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion); 
+	    oSprintMant.pEditar(viIDSprint2,vsDescripcion2,vdFechaInicio2,vdFechaFin2,viDuracionDias2,vsEstado2,vdPorcentajeAvance2,viIDUsuarioCreacion2,vdFechaCreacion2,viIDUsuarioModificacion2,vdFechaModificacion2);    
 
 	    clsSprint oSprint = oSprintMant.faBuscarPk(viIDSprint2);	    
 	    assertNull(oSprintMant.faBuscarPk(viIDSprint));

@@ -7,18 +7,22 @@ public class clsSprint {
 	private String dFechaInicio; 
 	private String dFechaFin; 
 	private int iDuracionDias;
+	private String sEstado;
+	private double dPorcentajeAvance;
 	private int iIDUsuarioCreacion;
 	private String dFechaCreacion;
 	private int iIDUsuarioModificacion;
 	private String dFechaModificacion;
 	
-	public clsSprint(int viIDSprint,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionDias,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion) {					
+	public clsSprint(int viIDSprint,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion) {					
 	
 		this.iIDSprint=viIDSprint;
 		this.sDescripcion=vsDescripcion;
 		this.dFechaInicio=vdFechaInicio; 
 		this.dFechaFin=vdFechaFin; 
 		this.iDuracionDias=viDuracionDias;
+		this.sEstado=vsEstado;
+		this.dPorcentajeAvance=vdPorcentajeAvance;
 		this.iIDUsuarioCreacion=viIDUsuarioCreacion;
 		this.dFechaCreacion=vdFechaCreacion;
 		this.iIDUsuarioModificacion=viIDUsuarioModificacion;
@@ -44,6 +48,14 @@ public class clsSprint {
 
 	public int get_iDuracionDias(){
 		return iDuracionDias;
+	}
+	
+	public String get_sEstado(){
+		return sEstado;
+	}
+
+	public double get_dPorcentajeAvance(){
+		return dPorcentajeAvance;
 	}
 	
 	public String get_dFechaCreacion(){
