@@ -234,7 +234,7 @@ public class clsTestTareaMant {
 	}
 
 	@Test
-	public void DebeGrabarFechaInicioMenorIgualaFecheFin(){
+	public void DebeGrabarFechaInicioMenorIgualaFechaFin(){
 		
 		System.out.println("");
         System.out.println("Editar Campo Fecha Inicio menor a Fecha Fin");
