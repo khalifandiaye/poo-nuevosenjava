@@ -1,5 +1,6 @@
 package pksource;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class clsTareaMant {
 
@@ -9,10 +10,32 @@ public class clsTareaMant {
 		tareas = new ArrayList<clsTarea>();		
 	}
 	
-	public void pAgregar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,
-			String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
+	private boolean fbValidar(float vfPorcentajeAvance,Date vdFechaInicio,Date vdFechaFin){
+		if (vfPorcentajeAvance<0){
+			System.out.println("Debe grabar un porcentaje mayor o igual a cero");
+			return false;
+		}
+		if (vfPorcentajeAvance>100){
+			System.out.println("Debe grabar un porcentaje menor o igual a cien");
+			return false;
+		}
+		
+		int dateResult=vdFechaInicio.compareTo(vdFechaFin);
+				
+		if(dateResult>0){
+			System.out.println("Debe grabar Fecha Inicio menor o igual a Fecha Final");
+			return false;
+		}
+		return true;
+	}
+	
+	public void pAgregar(int viIDTarea,int viIDHistoria,String vsDescripcion,Date vdFechaInicio,
+			Date vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
 			int viIDTareaPadre, float vfPorcentajeAvance, 
-			String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+			Date vdFechaCreacion,Date vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+		
+		if (fbValidar(vfPorcentajeAvance,vdFechaInicio,vdFechaFin)==false)
+			return;
 		
 		if (faBuscar(vsDescripcion) == null){		
 			clsTarea nuevaTarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
@@ -53,10 +76,15 @@ public class clsTareaMant {
         return i;
 	}
 	
-	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,
-			String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
+	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,Date vdFechaInicio,
+			Date vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
 			int viIDTareaPadre, float vfPorcentajeAvance, 
-			String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+			Date vdFechaCreacion,Date vdFechaModificacion,
+			int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+		
+		if (fbValidar(vfPorcentajeAvance,vdFechaInicio,vdFechaFin)==false)
+			return;
+		
 		if (faBuscarPkPos(viIDTarea) != -1) {
 			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
 					vdFechaFin,viDuracionHoras,vsEstado,vsTipo,
