@@ -1,29 +1,30 @@
 package pksource;
+import java.util.Date;
 
 public class clsTarea {
 	private int iIDTarea;
 	private int iIDHistoria;
 	private String sDescripcion;
-	private String dFechaInicio;
-	private String dFechaFin;
+	private Date dFechaInicio;
+	private Date dFechaFin;
 	private int iDuracionHoras;
 	private String sEstado;
 	private String sTipo;
 	private int iIDTareaPadre;
 	private float fPorcentajeAvance;
 	
-	private String dFechaCreacion;
-	private String dFechaModificacion;
+	private Date dFechaCreacion;
+	private Date dFechaModificacion;
 	private int iIDUsuarioCreacion;
 	private int iIDUsuarioModificacion;
 
 	
 	public clsTarea(int viIDTarea, int viIDHistoria, 
-			String vsDescripcion, String vdFechaInicio, String vdFechaFin, 
+			String vsDescripcion, Date vdFechaInicio, Date vdFechaFin, 
 			int viDuracionHoras, String vsEstado, String vsTipo,
 			int viIDTareaPadre, float vfPorcentajeAvance,
-			String vdFechaCreacion, 
-			String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
+			Date vdFechaCreacion, 
+			Date vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
 		
 		this.iIDTarea=viIDTarea;
 		this.iIDHistoria=viIDHistoria;
@@ -53,10 +54,10 @@ public class clsTarea {
 	public String get_sDescripcion(){
 		return sDescripcion;
 	}
-	public String get_dFechaInicio(){
+	public Date get_dFechaInicio(){
 		return dFechaInicio;
 	}
-	public String get_dFechaFin(){
+	public Date get_dFechaFin(){
 		return dFechaFin;
 	}
 	public int get_iDuracionHoras(){
@@ -75,11 +76,11 @@ public class clsTarea {
 	public float get_fPorcentajeAvance(){
 		return fPorcentajeAvance;
 	}
-	public String get_dFechaCreacion(){
+	public Date get_dFechaCreacion(){
 		return dFechaCreacion;
 	}
 
-	public String get_dFechaModificacion(){
+	public Date get_dFechaModificacion(){
 		return dFechaModificacion;
 	}
 
