@@ -71,6 +71,22 @@ public class clsTestTareaMant {
 		assertEquals(viIDUsuarioCreacion,oTarea.get_iIDUsuarioCreacion());
 		assertEquals(viIDUsuarioModificacion,oTarea.get_iIDUsuarioModificacion());
 		
+		
+        System.out.println("<<Resultados>>");
+        System.out.println("IDTarea: "  + oTarea.get_iIDTarea()); // imprime los valores grabados
+        System.out.println("IDHistoria: " + oTarea.get_iIDHistoria()); // imprime los valores grabados
+        System.out.println("Descripción: " + oTarea.get_sDescripcion()); // imprime los valores grabados
+        System.out.println("Fecha Inicio: " + oTarea.get_dFechaInicio()); // imprime los valores grabados
+        System.out.println("Fecha Fin: " + oTarea.get_dFechaFin()); // imprime los valores grabados
+        System.out.println("Duración: " + oTarea.get_iDuracionHoras()); // imprime los valores grabados
+        System.out.println("Estado: " + oTarea.get_sEstado()); // imprime los valores grabados
+        System.out.println("Tipo: " + oTarea.get_sTipo()); // imprime los valores grabados
+        System.out.println("Porcentaje Avance: " + oTarea.get_fPorcentajeAvance()); // imprime los valores grabados
+        
+        System.out.println("FechaCreacion: " + oTarea.get_dFechaCreacion()); // imprime los valores grabados        
+        System.out.println("UsuarioCreacion: " + oTarea.get_iIDUsuarioCreacion()); // imprime los valores grabados
+        
+
 	}
 	
 	
