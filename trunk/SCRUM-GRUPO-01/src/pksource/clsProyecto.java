@@ -35,7 +35,7 @@ public class clsProyecto {
 		return dFechaCreacion;
 	}
 
-	public String get_sFechaModificacion(){
+	public String get_dFechaModificacion(){
 		return dFechaModificacion;
 	}
 
