@@ -19,6 +19,10 @@ public class clsUsuario {
 		this.sApellidoMaterno=vsApellidoMaterno;
 		this.sNombres=vsNombres;
 		this.iRol=viRol;
+		this.dFechaCreacion=vdFechaCreacion;
+		this.dFechaModificacion=vdFechaModificacion;
+		this.iIDUsuarioCreacion=viIDUsuarioCreacion;
+		this.iIDUsuarioModificacion=viIDUsuarioModificacion;
 	}
 	
 	public int get_iIDUsuario(){
