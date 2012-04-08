@@ -46,29 +46,35 @@ public class clsTareaMant {
 		int i = -1;
 		for (clsTarea tarea : tareas)
 		{
-        	i = i++;
+        	i++;
             if (tarea.get_iIDTarea() == viIDTarea)
                 return i;
 		}
         return i;
 	}
 	
-	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
+	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,String vdFechaInicio,
+			String vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
+			int viIDTareaPadre, float vfPorcentajeAvance, 
+			String vdFechaCreacion,String vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
 		if (faBuscarPkPos(viIDTarea) != -1) {
-			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionHoras,vsEstado,vsTipo,viIDUsuarioModificacion, viIDUsuarioModificacion, vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
+			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
+					vdFechaFin,viDuracionHoras,vsEstado,vsTipo,
+					viIDTareaPadre,vfPorcentajeAvance,
+					vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
 			tareas.set(faBuscarPkPos(viIDTarea), tarea);
 			System.out.println("Tarea Editada");
 		}
 		else
-			System.out.println("Tara No Editada");		
+			System.out.println("Tarea No Editada");		
 	}
 
 	public void pEliminar(int viIDTarea){
 		if (faBuscarPkPos(viIDTarea) != -1) {
 			tareas.remove(faBuscarPkPos(viIDTarea));
-			System.out.println("Tarea Borrada");
+			System.out.println("Tarea Eliminada");
 		}
 		else
-			System.out.println("Tarea No Borrada");		
+			System.out.println("Tarea No Eliminada");		
 	}
 }
