@@ -17,7 +17,7 @@ public class clsTestHistoriaMant {
 		int iIdProducto = 0001;
 		int iOrdenPrioridadEstimada = 1;
 		int iOrdenPrioridadReal = 3;
-		String cEstado = "A";
+		String cEstado = "A";//A: Aprobado P:Pendiente
 		int iDuracionDias = 5;
 		float fCosto = 12;
 
@@ -194,7 +194,7 @@ public class clsTestHistoriaMant {
 		iIdProducto = 0001;
 		iOrdenPrioridadEstimada = 1;
 		iOrdenPrioridadReal = 3;
-		cEstado = "A";
+		cEstado = "P";
 		iDuracionDias = 5;
 		fCosto = 12;
 		// Act
