@@ -64,7 +64,7 @@ public class clsHistoriaMant {
     			} 
     			else 
     			{
-    				System.out.println("Historia ya ha sido asignada no se puede eliminar");
+    				System.out.println("Historia ya ha sido aprobada no se puede eliminar");
     				return false;
     			}
     		}
@@ -78,7 +78,14 @@ public class clsHistoriaMant {
     	
     	for (i=0; i<historias.size(); i++)
     	{
-    		System.out.println(historias.get(i).getiIDhistoria() + "-" + historias.get(i).getiIDProducto() + " " + historias.get(i).getiOrdenPrioridadEstimada() + " " + historias.get(i).getiOrdenPrioridadReal() + " " + historias.get(i).getcEstado()+ " " + historias.get(i).getiDuracionDias()+ " " + historias.get(i).getfCosto());    		 		
+    		System.out.println("Codigo: " + historias.get(i).getiIDhistoria());
+    		System.out.println("Codigo Proyecto :" +  historias.get(i).getiIDProducto());
+    		System.out.println("IDOrdenProridadEstimada :" + historias.get(i).getiOrdenPrioridadEstimada());
+    		System.out.println("IDOrdenPrioridadReal" + historias.get(i).getiOrdenPrioridadReal());
+    		System.out.println("Estado: " + historias.get(i).getcEstado());
+    		System.out.println("DuraciónDias :" + historias.get(i).getiDuracionDias());
+    		System.out.println("Costo :" + historias.get(i).getfCosto());    	
+    		System.out.println("-----------------------------------------------------------------------------");
     	}		
     }
     
