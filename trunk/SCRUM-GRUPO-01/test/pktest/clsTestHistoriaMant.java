@@ -106,12 +106,12 @@ public class clsTestHistoriaMant {
 		clsHistoria historia = adm.buscarHistoria(0001);
 		assertNotNull(historia);
 		System.out.println("Historia encontrada con los siguientes datos: ");
-		System.out.println(historia.getiIDhistoria());
-		System.out.println(historia.getiIDProducto());
-		System.out.println(historia.getiOrdenPrioridadEstimada());
-		System.out.println(historia.getiOrdenPrioridadReal());
-		System.out.println(historia.getcEstado());
-		System.out.println(historia.getfCosto());		
+		System.out.println("Codigo: " + historia.getiIDhistoria());
+		System.out.println("ID Producto: " + historia.getiIDProducto());
+		System.out.println("IDOrdenPrioridadEstimada: " + historia.getiOrdenPrioridadEstimada());
+		System.out.println("IDOrdenPrioridadReal: " + historia.getiOrdenPrioridadReal());
+		System.out.println("Estado: " + historia.getcEstado());
+		System.out.println("Costo : " + historia.getfCosto());		
 	}
 
 	@Test
