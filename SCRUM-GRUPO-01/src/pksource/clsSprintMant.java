@@ -1,6 +1,8 @@
 package pksource;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class clsSprintMant {
 	
@@ -10,33 +12,49 @@ public class clsSprintMant {
 		sprints = new ArrayList<clsSprint>();
 	}
 	
-	public void pAgregar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
-		if (faBuscar(vsDescripcion) == null){		
-			clsSprint nuevoSprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
-			sprints.add(nuevoSprint);
-			System.out.println("Sprint Agregado");
-		}		
+	public void pAgregar(int viIDSprint,String vsDescripcion,Date vdFechaInicio, Date vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,Date vdFechaCreacion,int viIDUsuarioModificacion,Date vdFechaModificacion){
+		if (vdPorcentajeAvance != 0){
+			System.out.println("Debe grabar un porcentaje igual a cero");
+			System.out.println("Sprint No Agregado");}
 		else
-			System.out.println("Sprint No Agregado");
+		 	if (vdFechaInicio.compareTo(vdFechaFin)>0){
+				System.out.println("Debe grabar Fecha Inicio menor o igual a Fecha Final");	}
+			else
+				if (faBuscar(vsDescripcion) == null){		
+					clsSprint nuevoSprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
+					sprints.add(nuevoSprint);
+					System.out.println("Sprint Agregado");}		
+				else
+					System.out.println("Sprint No Agregado");
 	}
 	
-	public void pEliminar(int viIDSprint2){
-		if (faBuscarPkPos(viIDSprint2) != -1) {
-			sprints.remove(faBuscarPkPos(viIDSprint2));
-			System.out.println("Sprint Borrado");
-		}
+	public void pEliminar(int viIDSprint2, double vdPorcentajeAvance){
+		if (vdPorcentajeAvance != 0) {
+			System.out.println("No se puede eliminar un Sprint ya avanzado");
+			System.out.println("Sprint No Borrado");}
+		else
+			if (faBuscarPkPos(viIDSprint2) != -1) {
+				sprints.remove(faBuscarPkPos(viIDSprint2));
+				System.out.println("Sprint Borrado");
+			}
 		else
 			System.out.println("Sprint No Borrado");		
 	}
 	
-	public void pEditar(int viIDSprint,String vsDescripcion,String vdFechaInicio, String vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion){
-		if (faBuscarPkPos(viIDSprint) != -1) {
-			clsSprint sprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
-			sprints.set(faBuscarPkPos(viIDSprint),sprint);
-			System.out.println("Sprint Editado");
-		}
+	public void pEditar(int viIDSprint,String vsDescripcion,Date vdFechaInicio, Date vdFechaFin, int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,Date vdFechaCreacion,int viIDUsuarioModificacion,Date vdFechaModificacion){
+		if (vdPorcentajeAvance<0 || vdPorcentajeAvance > 100){
+			System.out.println("Debe grabar un porcentaje mayor o igual a cero.  Debe de grabar un porcentaje menor o igual a cien");
+			System.out.println("Sprint No Editado");}
 		else
-			System.out.println("Sprint No Editado");		
+		 	if (vdFechaInicio.compareTo(vdFechaFin)>0){
+				System.out.println("Debe grabar Fecha Inicio menor o igual a Fecha Final");	}
+		 	else
+		 		if (faBuscarPkPos(viIDSprint) != -1) {
+		 			clsSprint sprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
+		 			sprints.set(faBuscarPkPos(viIDSprint),sprint);
+		 			System.out.println("Sprint Editado");}
+		 		else
+		 			System.out.println("Sprint No Editado");		
 	}
 
 	public clsSprint faBuscar(String vsDescripcion){
