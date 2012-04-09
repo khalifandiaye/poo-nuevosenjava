@@ -93,7 +93,7 @@ public class clsHistoriaMant {
     {
     	int i;
     	
-    	for (i=0; i<historias.size(); i++)
+    	for (i=0; i<historias.size(); i++)    		
     	{
     		if (historias.get(i).getiIDhistoria()==viIDhistoria)
     		{
