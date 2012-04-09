@@ -1,20 +1,22 @@
 package pksource;
 
+import java.util.Date;
+
 public class clsSprint {
 	
 	private int iIDSprint;
 	private String sDescripcion;
-	private String dFechaInicio; 
-	private String dFechaFin; 
+	private Date dFechaInicio; 
+	private Date dFechaFin; 
 	private int iDuracionDias;
 	private String sEstado;
 	private double dPorcentajeAvance;
 	private int iIDUsuarioCreacion;
-	private String dFechaCreacion;
+	private Date dFechaCreacion;
 	private int iIDUsuarioModificacion;
-	private String dFechaModificacion;
+	private Date dFechaModificacion;
 	
-	public clsSprint(int viIDSprint,String vsDescripcion,String vdFechaInicio,String vdFechaFin,int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,String vdFechaCreacion,int viIDUsuarioModificacion,String vdFechaModificacion) {					
+	public clsSprint(int viIDSprint,String vsDescripcion,Date vdFechaInicio,Date vdFechaFin,int viDuracionDias,String vsEstado,double vdPorcentajeAvance,int viIDUsuarioCreacion,Date vdFechaCreacion,int viIDUsuarioModificacion,Date vdFechaModificacion) {					
 	
 		this.iIDSprint=viIDSprint;
 		this.sDescripcion=vsDescripcion;
@@ -38,11 +40,11 @@ public class clsSprint {
 		return iIDSprint;
 	}
 
-	public String get_dFechaInicio(){
+	public Date get_dFechaInicio(){
 		return dFechaInicio;
 	}
 	
-	public String get_dFechaFin(){
+	public Date get_dFechaFin(){
 			return dFechaFin;
 	}
 
@@ -58,11 +60,11 @@ public class clsSprint {
 		return dPorcentajeAvance;
 	}
 	
-	public String get_dFechaCreacion(){
+	public Date get_dFechaCreacion(){
 		return dFechaCreacion;
 	}
 
-	public String get_sFechaModificacion(){
+	public Date get_sFechaModificacion(){
 		return dFechaModificacion;
 	}
 
