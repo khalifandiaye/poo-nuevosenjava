@@ -49,6 +49,18 @@ public class clsHistoriaMant {
         return null;
     }  
     
+    public clsHistoria buscarHistoriaxIDProducto(int viIDProducto) {
+        // Busqueda secuencial
+        for(clsHistoria historia : historias)
+        {
+            if (historia.getiIDProducto()==viIDProducto) 
+            {            	
+                return historia;       
+            }
+        }       
+        return null;
+    }  
+    
     public boolean eliminarHistoriaUsuario(int viIDhistoria)
     {
     	int i;
