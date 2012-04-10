@@ -3,12 +3,16 @@ package pktest;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+//import System.out.format;
+
 import org.junit.Test;
 import org.junit.Before;
 
+import pksource.clsProyectoUsuario;
 import pksource.clsUsuario;
 import pksource.clsUsuarioMant;
 import pksource.clsProyectoMant;
+import pksource.clsProyecto;
 import pksource.clsProyectoUsuarioMant;
 
 public class clsTestUsuarioMant {
@@ -32,7 +36,27 @@ public class clsTestUsuarioMant {
         oProyectoUsuarioMant.pAgregar(1,3,"03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,5,"03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,6,"03/03/2012","03/03/2012",1,1);				
-    }
+        
+        String sFormato;
+
+        //Usuario
+        sFormato = "|%1$-4s|%2$-30s|%3$-20s|%4$-20s|%5$-20s|\n";
+    	System.out.println("\n[USUARIOS]");
+    	System.out.println("======================================================================================================================");
+        System.out.format(sFormato,"ID","Correo","ApellidoPaterno","ApellidoMaterno","Nombres");
+    	System.out.println("======================================================================================================================");
+    	for( clsUsuario oUsuario  : oUsuarioMant.usuarios)
+            System.out.format(sFormato,oUsuario.get_iIDUsuario(),oUsuario.get_sCorreo(),oUsuario.get_sApellidoPaterno(),oUsuario.get_sApellidoMaterno(),oUsuario.get_sNombres());    		
+
+    	//Proyectos
+        sFormato = "|%1$-4s|%2$-50s|%3$-30s|\n";
+    	System.out.println("\n[PROYECTOS]");
+    	System.out.println("======================================================================================================================");
+        System.out.format(sFormato,"ID","Descripcion","Cliente");
+    	System.out.println("======================================================================================================================");
+    	for( clsProyecto oProyecto  : oProyectoMant.proyectos)
+            System.out.format(sFormato,oProyecto.get_iIDProyecto(),oProyecto.get_sDescripcion(),oProyecto.get_sCliente());    			
+}
 	
 	@Test
     public void DebeCrearUsuario(){
@@ -155,15 +179,16 @@ public class clsTestUsuarioMant {
         clsUsuario oUsuario = oUsuarioMant.faBuscarPk(viIDUsuario2);        
         assertNotNull(oUsuario); //Encuentra el registro modificado  
         System.out.println("<<Resultados>>");
-        System.out.println("IDUsuario: "  + oUsuario.get_iIDUsuario()); // imprime los valores grabados
-        System.out.println("Correo: " + oUsuario.get_sCorreo()); // imprime los valores grabados
-        System.out.println("ApellidoPaterno: " + oUsuario.get_sApellidoPaterno()); // imprime los valores grabados
-        System.out.println("ApellidoMaterno: " + oUsuario.get_sApellidoMaterno()); // imprime los valores grabados
-        System.out.println("Nombres: " + oUsuario.get_sNombres()); // imprime los valores grabados
-        System.out.println("Rol: " + oUsuario.get_iRol()); // imprime los valores grabados
-        System.out.println("FechaCreacion: " + oUsuario.get_dFechaCreacion()); // imprime los valores grabados
-        System.out.println("FechaModificacion: " + oUsuario.get_dFechaModificacion()); // imprime los valores grabados
-        System.out.println("UsuarioCreacion: " + oUsuario.get_iIDUsuarioCreacion()); // imprime los valores grabados
-        System.out.println("UsuarioModificacion: " + oUsuario.get_iIDUsuarioModificacion()); // imprime los valores grabados
+        //System.out.format("",oUsuario.get_iIDUsuario(),oUsuario.get_sCorreo(),oUsuario.get_sApellidoPaterno(),oUsuario.get_sApellidoMaterno(),oUsuario.get_sNombres());
+       // System.out.println("IDUsuario: "  + oUsuario.get_iIDUsuario()); // imprime los valores grabados
+        //System.out.println("Correo: " + oUsuario.get_sCorreo()); // imprime los valores grabados
+        //System.out.println("ApellidoPaterno: " + oUsuario.get_sApellidoPaterno()); // imprime los valores grabados
+        //System.out.println("ApellidoMaterno: " + oUsuario.get_sApellidoMaterno()); // imprime los valores grabados
+        //System.out.println("Nombres: " + oUsuario.get_sNombres()); // imprime los valores grabados
+        //System.out.println("Rol: " + oUsuario.get_iRol()); // imprime los valores grabados
+        //System.out.println("FechaCreacion: " + oUsuario.get_dFechaCreacion()); // imprime los valores grabados
+        //System.out.println("FechaModificacion: " + oUsuario.get_dFechaModificacion()); // imprime los valores grabados
+        //System.out.println("UsuarioCreacion: " + oUsuario.get_iIDUsuarioCreacion()); // imprime los valores grabados
+        //System.out.println("UsuarioModificacion: " + oUsuario.get_iIDUsuarioModificacion()); // imprime los valores grabados
     }
 }
