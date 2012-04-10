@@ -4,11 +4,32 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
+import org.junit.Before;
 
 import pksource.clsUsuario;
 import pksource.clsUsuarioMant;
+import pksource.clsProyectoMant;
+import pksource.clsProyectoUsuarioMant;
 
 public class clsTestUsuarioMant {
+    clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
+    clsProyectoMant oProyectoMant = new clsProyectoMant();
+    clsProyectoUsuarioMant oProyectoUsuarioMant = new clsProyectoUsuarioMant();
+
+	@Before
+    public void initObjects() {
+        oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","a","a","a",1,1);				
+        oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","a","a","a",1,1);				
+        oProyectoMant.pAgregar(3,"SEGURIDAD APLICACIONES","a","a","a",1,1);				
+        oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(6,"luis.@hotmail.com","a","a","a",1,"a","a",1,1);				
+        oUsuarioMant.pAgregar(7,"luis.cripiani@hotmail.com","a","a","a",1,"a","a",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,2,"a","a",1,1);				
+    }
 	
 	@Test
     public void DebeCrearUsuario(){
@@ -26,7 +47,7 @@ public class clsTestUsuarioMant {
     	String vdFechaModificacion = "05/04/2012";
     	int viIDUsuarioCreacion = 1;
     	int viIDUsuarioModificacion = 1;    	
-        clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
+        //clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
         // Act
         oUsuarioMant.pAgregar(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);    
         //Assert
@@ -73,7 +94,7 @@ public class clsTestUsuarioMant {
     	String vdFechaModificacion2 = "05/04/2012";
     	int viIDUsuarioCreacion2 = 1;
     	int viIDUsuarioModificacion2 = 1;    	
-        clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
+        //clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
 
         // Act
         oUsuarioMant.pAgregar(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);    
