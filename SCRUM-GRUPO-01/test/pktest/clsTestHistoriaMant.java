@@ -2,6 +2,7 @@ package pktest;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pksource.clsHistoria;
@@ -9,25 +10,31 @@ import pksource.clsHistoriaMant;
 
 public class clsTestHistoriaMant {
 
+	clsHistoriaMant adm = new clsHistoriaMant();
+	int iIDhistoria;
+	int iIdProducto;
+	int iOrdenPrioridadEstimada;
+	int iOrdenPrioridadReal;
+	String cEstado;
+	int iDuracionDias;
+	float fCosto;
+
+	@Before
+	public void Carga() {
+		// Registro 1
+		adm.pRegistrarHistoria(1, 1, 1, 1, "A", 5, 1000);
+		// Registro 2
+		adm.pRegistrarHistoria(2, 1, 2, 2, "A", 10, 2000);
+		// Registro 3
+		adm.pRegistrarHistoria(3, 1, 3, 3, "P", 15, 3000);
+	}
+
 	@Test
 	public void RegistrarHistoria() {
-		System.out.println("Registro de Historia de Usuario");
-		// Registro 1
-		int iIDhistoria = 0001;
-		int iIdProducto = 0001;
-		int iOrdenPrioridadEstimada = 1;
-		int iOrdenPrioridadReal = 3;
-		String cEstado = "A";//A: Aprobado P:Pendiente
-		int iDuracionDias = 5;
-		float fCosto = 12;
+		System.out.println("Registro de Historia de Usuario");		
 
-		clsHistoriaMant adm = new clsHistoriaMant();
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		// Registro 2
-		iIDhistoria = 0002;
+		// Registro 4
+		iIDhistoria = 0004;
 		iIdProducto = 0001;
 		iOrdenPrioridadEstimada = 1;
 		iOrdenPrioridadReal = 3;
@@ -35,20 +42,8 @@ public class clsTestHistoriaMant {
 		iDuracionDias = 5;
 		fCosto = 12;
 
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		// Registro 3
-		iIDhistoria = 0003;
-		iIdProducto = 0001;
-		iOrdenPrioridadEstimada = 1;
-		iOrdenPrioridadReal = 3;
-		cEstado = "A";
-		iDuracionDias = 5;
-		fCosto = 12;
-
-		// Registra, valida que no exista y que se hayan ingresado los datos necesarios.
+		// Registra, valida que no exista y que se hayan ingresado los datos
+		// necesarios.
 		assertTrue(adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
 				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
 				iDuracionDias, fCosto));
@@ -58,97 +53,26 @@ public class clsTestHistoriaMant {
 	@Test
 	public void BuscarHistoria() {
 		System.out.println("Busqueda de Historia de Usuario");
-		// Definir los datos de pruebas
-		int iIDhistoria = 0001;
-		int iIdProducto = 0001;
-		int iOrdenPrioridadEstimada = 1;
-		int iOrdenPrioridadReal = 3;
-		String cEstado = "A";
-		int iDuracionDias = 5;
-		float fCosto = 12;
 		
-		// Ejecutar los métodos a probar
-		clsHistoriaMant adm = new clsHistoriaMant();
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-		
-		// Definir los datos de pruebas
-		iIDhistoria = 0002;
-		iIdProducto = 0001;
-		iOrdenPrioridadEstimada = 1;
-		iOrdenPrioridadReal = 3;
-		cEstado = "A";
-		iDuracionDias = 5;
-		fCosto = 12;
-		
-		// Ejecutar los métodos a probar
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		// Definir los datos de pruebas
-		iIDhistoria = 0003;
-		iIdProducto = 0001;
-		iOrdenPrioridadEstimada = 1;
-		iOrdenPrioridadReal = 3;
-		cEstado = "A";
-		iDuracionDias = 5;
-		fCosto = 12;
-		
-		// Ejecutar los métodos a probar
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		// Buscar un registro 
-		
+		// Buscar un registro
 		clsHistoria historia = adm.buscarHistoria(0001);
 		assertNotNull(historia);
 		System.out.println("Historia encontrada con los siguientes datos: ");
 		System.out.println("Codigo: " + historia.getiIDhistoria());
 		System.out.println("ID Producto: " + historia.getiIDProducto());
-		System.out.println("IDOrdenPrioridadEstimada: " + historia.getiOrdenPrioridadEstimada());
-		System.out.println("IDOrdenPrioridadReal: " + historia.getiOrdenPrioridadReal());
+		System.out.println("IDOrdenPrioridadEstimada: "
+				+ historia.getiOrdenPrioridadEstimada());
+		System.out.println("IDOrdenPrioridadReal: "
+				+ historia.getiOrdenPrioridadReal());
 		System.out.println("Estado: " + historia.getcEstado());
-		System.out.println("Costo : " + historia.getfCosto());		
+		System.out.println("Costo : " + historia.getfCosto());
 	}
 
 	@Test
 	public void ActualizarHistoria() {
-		
+
 		System.out.println("Actualizacion de Historia de Usuario");
-		
-		clsHistoriaMant adm = new clsHistoriaMant();
-		
-		// Definir los datos de pruebas
-		int iIDhistoria = 0001;
-		int iIdProducto = 0001;
-		int iOrdenPrioridadEstimada = 1;
-		int iOrdenPrioridadReal = 3;
-		String cEstado = "A";
-		int iDuracionDias = 5;
-		float fCosto = 12;
-		
-		// Ejecutar los métodos a probar
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		iIDhistoria = 0002;
-		iIdProducto = 0001;
-		iOrdenPrioridadEstimada = 1;
-		iOrdenPrioridadReal = 3;
-		cEstado = "A";
-		iDuracionDias = 5;
-		fCosto = 12;
-		// Act
-		// Ejecutar los métodos a probar
-
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
+	
 		adm.printHistoriaUsuario();
 
 		// historia a actualizar
@@ -172,41 +96,10 @@ public class clsTestHistoriaMant {
 	@Test
 	public void EliminarHistoriaUsuario() {
 		System.out.println("Eliminación de Historia de Usuario");
-		clsHistoriaMant adm = new clsHistoriaMant();
-
-		// Arrange
-		// Definir los datos de pruebas
-		int iIDhistoria = 0001;
-		int iIdProducto = 0001;
-		int iOrdenPrioridadEstimada = 1;
-		int iOrdenPrioridadReal = 3;
-		String cEstado = "A";
-		int iDuracionDias = 5;
-		float fCosto = 12;
-		// Act
-		// Ejecutar los métodos a probar
-
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
-		iIDhistoria = 0002;
-		iIdProducto = 0001;
-		iOrdenPrioridadEstimada = 1;
-		iOrdenPrioridadReal = 3;
-		cEstado = "P";
-		iDuracionDias = 5;
-		fCosto = 12;
-		// Act
-		// Ejecutar los métodos a probar
-
-		adm.pRegistrarHistoria(iIDhistoria, iIdProducto,
-				iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
-				iDuracionDias, fCosto);
-
+		
 		adm.printHistoriaUsuario();
 
-		assertTrue(adm.eliminarHistoriaUsuario(0002));
+		assertTrue(adm.eliminarHistoriaUsuario(0003));
 
 		System.out.println("Despues de la Eliminación:");
 
