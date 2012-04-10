@@ -18,17 +18,20 @@ public class clsTestUsuarioMant {
 
 	@Before
     public void initObjects() {
-        oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","a","a","a",1,1);				
-        oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","a","a","a",1,1);				
-        oProyectoMant.pAgregar(3,"SEGURIDAD APLICACIONES","a","a","a",1,1);				
-        oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(6,"luis.@hotmail.com","a","a","a",1,"a","a",1,1);				
-        oUsuarioMant.pAgregar(7,"luis.cripiani@hotmail.com","a","a","a",1,"a","a",1,1);				
-        oProyectoUsuarioMant.pAgregar(1,2,"a","a",1,1);				
+        oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","WONG","03/03/2012","03/03/2012",1,1);				
+        oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","UPC","03/03/2012","03/03/2012",1,1);				
+        oProyectoMant.pAgregar(3,"CONTROL DE VISITAS","SARITA COLONIA","03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","Leon","Alegria","Romulo",1,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","Humala","Taso","Antauro",2,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","Quimper","Herrera","Alberto",3,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","Denegri","Santagadea","Marco Aurelio",1,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","a",3,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(6,"kenji.fujimori@hotmail.com","Fujimori","Higuchi","Kenji",3,"03/03/2012","03/03/2012",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,1,"03/03/2012","03/03/2012",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,2,"03/03/2012","03/03/2012",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,3,"03/03/2012","03/03/2012",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,5,"03/03/2012","03/03/2012",1,1);				
+        oProyectoUsuarioMant.pAgregar(1,6,"03/03/2012","03/03/2012",1,1);				
     }
 	
 	@Test
