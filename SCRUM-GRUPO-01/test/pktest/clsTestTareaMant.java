@@ -1,6 +1,7 @@
 package pktest;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pksource.clsTarea;
@@ -8,7 +9,27 @@ import pksource.clsTareaMant;
 import java.util.Date;
 import java.util.Calendar;
 
+
 public class clsTestTareaMant {
+	clsTareaMant oTareaMant = new clsTareaMant();
+	
+	@Before
+	public void CargarTareas(){
+		Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);Date vdFechaInicio=Cal.getTime();
+        Cal.set(2012,3,8);Date vdFechaFin=Cal.getTime();
+        Cal.set(2012,3,9);Date vdFechaCreacion=Cal.getTime();              
+		oTareaMant.pAgregar(1, 1, "Tarea 1",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
+		oTareaMant.pAgregar(2, 1, "Tarea 2",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
+		oTareaMant.pAgregar(3, 1, "Tarea 3",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(7, 3, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(8, 3, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(9, 3, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		
+	}
 	
 	
 	@Test
@@ -44,7 +65,7 @@ public class clsTestTareaMant {
 		int viIDUsuarioModificacion=0;
 		
 		//Agregar
-		clsTareaMant oTareaMant = new clsTareaMant();
+		//clsTareaMant oTareaMant = new clsTareaMant();
 		
 		oTareaMant.pAgregar(viIDTarea, viIDHistoria, vsDescripcion, 
 				vdFechaInicio, vdFechaFin, viDuracionHoras, 
