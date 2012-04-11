@@ -1,6 +1,8 @@
 package pksource;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class clsUsuarioMant {
 
@@ -11,7 +13,7 @@ public class clsUsuarioMant {
 	}
 	
 	public void pAgregar(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
-		if (faBuscar(vsCorreo) == null){		
+		if (fbValidaciones(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol,vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion)){		
 			clsUsuario nuevoUsuario = new clsUsuario(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);
 			usuarios.add(nuevoUsuario);
 			System.out.println("Usuario Agregado");
@@ -66,4 +68,59 @@ public class clsUsuarioMant {
         return i;
 	}
 
+	public boolean isDate(String fechax) {
+	        try {
+	            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+	            Date fecha = formatoFecha.parse(fechax);
+	        } catch (Exception e) {
+	            return false;
+	        }
+	        return true;
+	    }
+	public boolean fbValidaciones(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol,String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
+		boolean err = false;
+		//Valida duplicidad
+		clsUsuario oUsuario = faBuscarPk(viIDUsuario);
+		if (oUsuario != null){
+			System.out.println("Error: Usuario duplicado");
+			err = true;
+		}
+		//Valida exigencia de datos
+		if (viIDUsuario<=0 || vsCorreo == "" || vsApellidoPaterno=="" || vsApellidoMaterno=="" || vsNombres=="" || viRol==0 || vdFechaCreacion=="" || vdFechaModificacion=="" || viIDUsuarioCreacion <= 0 || viIDUsuarioModificacion<=0)
+		{
+			System.out.println("Error: Datos incompletos");
+			err = true;
+		}
+		//Valida usuariocreacion
+		oUsuario = faBuscarPk(viIDUsuarioCreacion);
+		if (oUsuario == null && viIDUsuarioCreacion != 1){
+			System.out.println("Error: UsuarioCreacion no existe");
+			err = true;
+		}
+		//Valida usuariomodificacion
+		oUsuario = faBuscarPk(viIDUsuarioModificacion);
+		if (oUsuario == null && viIDUsuarioModificacion != 1){
+			System.out.println("Error: UsuarioModificacion no existe");
+			err = true;
+		}
+		//Valida correo
+		if (vsCorreo.indexOf('@')==-1 || vsCorreo.indexOf('.')==-1){
+			System.out.println("Error: Correo no valido");
+			err = true;
+		}
+		//Valida rol 1:PO, 2:SM, 3:TEAM, 4:QA
+		if (viRol<1 || viRol>4){
+			System.out.println("Error: Rol no valido");
+			err = true;
+		}
+		//Valida fechas
+		if (!isDate(vdFechaCreacion) || !isDate(vdFechaModificacion)){
+			System.out.println("Error: Fecha no valida");
+			err = true;
+		}
+		if (err == true){
+			return false;
+		}
+		return true;
+	}
 }
