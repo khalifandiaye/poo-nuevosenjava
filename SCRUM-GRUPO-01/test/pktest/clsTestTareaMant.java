@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import pksource.clsTarea;
 import pksource.clsTareaMant;
+import pksource.clsUsuario;
+
 import java.util.Date;
 import java.util.Calendar;
 
@@ -21,14 +23,27 @@ public class clsTestTareaMant {
         Cal.set(2012,3,9);Date vdFechaCreacion=Cal.getTime();              
 		oTareaMant.pAgregar(1, 1, "Tarea 1",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
 		oTareaMant.pAgregar(2, 1, "Tarea 2",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
-		oTareaMant.pAgregar(3, 1, "Tarea 3",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
-		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
-		oTareaMant.pAgregar(7, 3, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(8, 3, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
-		oTareaMant.pAgregar(9, 3, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(3, 1, "Tarea 3",vdFechaInicio,vdFechaFin, 48,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"ER", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 24,	"PD", "B",4,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(7, 3, "Tarea 7",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(8, 3, "Tarea 8",vdFechaInicio,vdFechaFin, 48,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
 		
+       String sFormato;
+
+       
+        sFormato = "|%1$-4s|%2$-30s|%3$-30s|%4$-30s|%5$-20s|%6$-12s|%7$-10s|\n";
+    	System.out.println("\n[TAREAS]");
+    	System.out.println("====================================================================================================================================================");
+        System.out.format(sFormato,"ID","Descripción","Fecha Inicio","Fecha Fin","Duración","Tipo","Estado");
+    	System.out.println("====================================================================================================================================================");
+    	for( clsTarea oTarea  : oTareaMant.tareas)
+            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),oTarea.get_dFechaInicio(),
+            		oTarea.get_dFechaFin(),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
+    	System.out.println("====================================================================================================================================================");
+
 	}
 	
 	
@@ -330,6 +345,65 @@ public class clsTestTareaMant {
 		
 		System.out.println("Nueva Rango de Fechas: " + oTarea.get_dFechaInicio()+ " a " +oTarea.get_dFechaFin() );
 
+		
+	}
+
+	@Test
+	public void DebeGrabarTareasBugsconTareaPadre(){
+        Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+        
+		//Date vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+        
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+        int viIDTarea=11;
+		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug sin Tarea Padre",vdFechaInicio,vdFechaFin, 
+				24,	"PD", "B",0,0,vdFechaCreacion,null,	1, 0);
+		
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		assertNotNull(oTarea);
+	}
+	@Test
+	public void DebeGrabarTareasBugsconTareaPadreExistentedelTipoNormal(){
+		
+        Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+        
+		//Date vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+        
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+        int viIDTarea=12;
+		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug con Tarea Padre del Tipo Bug",vdFechaInicio,vdFechaFin, 
+				24,	"PD", "B",5,0,vdFechaCreacion,null,	1, 0);
+		
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		assertNotNull(oTarea);
+		
+	}
+
+	@Test
+	public void DebeGrabarTareasNormalessinTareaPadre(){
+		
+		
+	}
+
+	@Test
+	public void DebeActualizarSoloTareasNormalesaEstadosEnRevision(){
+		
+		
+	}
+	@Test
+	public void DebeCrearunaTareaBugcuyaTareaPadretengaEstadoEnRevision(){
 		
 	}
 
