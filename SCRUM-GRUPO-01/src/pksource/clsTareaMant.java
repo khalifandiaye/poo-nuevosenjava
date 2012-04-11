@@ -29,6 +29,36 @@ public class clsTareaMant {
 		return true;
 	}
 	
+	private boolean fbValidarQA(String vsEstado, String vsTipo,	int viIDTareaPadre){
+		
+		//DebeGrabarTareasNormalessinTareaPadre
+		if (vsTipo=="N"){
+			if (viIDTareaPadre!=0) 
+				return false;
+		}
+		//DebeGrabarTareasBugsconTareaPadreExistentedelTipoNormal
+		if (vsTipo=="B"){
+			if (faBuscarPk(viIDTareaPadre) == null)		
+				return false;
+			//DebeGrabarTareasBugsconTareaPadre
+			if (viIDTareaPadre==0) 
+				return false;
+			//DebeActualizarSoloTareasNormalesaEstadosEnRevision
+			if (vsEstado=="ER")
+				return false;
+			//DebeCrearunaTareaBugcuyaTareaPadretengaEstadoEnRevision
+			
+			clsTarea oTareaBusq = faBuscarPk(viIDTareaPadre);
+			if (oTareaBusq.get_sEstado()!="ER")
+				return false;
+			
+		}
+		
+		
+		
+		return true;
+	}
+	
 	public void pAgregar(int viIDTarea,int viIDHistoria,String vsDescripcion,Date vdFechaInicio,
 			Date vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,
 			int viIDTareaPadre, float vfPorcentajeAvance, 
@@ -36,7 +66,9 @@ public class clsTareaMant {
 		
 		if (fbValidar(vfPorcentajeAvance,vdFechaInicio,vdFechaFin)==false)
 			return;
-		
+		if (fbValidarQA(vsEstado,vsTipo,viIDTareaPadre)==false)
+			return;
+			
 		if (faBuscar(vsDescripcion) == null){		
 			clsTarea nuevaTarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
 					vdFechaFin,viDuracionHoras,vsEstado,vsTipo,
