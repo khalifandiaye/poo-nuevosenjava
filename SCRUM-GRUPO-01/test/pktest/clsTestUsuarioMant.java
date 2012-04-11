@@ -19,6 +19,7 @@ public class clsTestUsuarioMant {
     clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
     clsProyectoMant oProyectoMant = new clsProyectoMant();
     clsProyectoUsuarioMant oProyectoUsuarioMant = new clsProyectoUsuarioMant();
+    String sFormato;
 
 	@Before
     public void initObjects() {
@@ -26,7 +27,7 @@ public class clsTestUsuarioMant {
         oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","Humala","Taso","Antauro",2,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","Quimper","Herrera","Alberto",3,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","Denegri","Santagadea","Marco Aurelio",1,"03/03/2012","03/03/2012",1,1);				
-        oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","a",3,"03/03/2012","03/03/2012",1,1);				
+        oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","Luis",3,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(6,"kenji.fujimori@hotmail.com","Fujimori","Higuchi","Kenji",3,"03/03/2012","03/03/2012",1,1);				
 		oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","WONG","03/03/2012","03/03/2012",1,1);				
         oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","UPC","03/03/2012","03/03/2012",1,1);				
@@ -37,8 +38,6 @@ public class clsTestUsuarioMant {
         oProyectoUsuarioMant.pAgregar(1,5,"03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,6,"03/03/2012","03/03/2012",1,1);				
         
-        String sFormato;
-
         //Usuario
         sFormato = "|%1$-4s|%2$-30s|%3$-20s|%4$-20s|%5$-20s|%6$-12s|%7$-10s|%8$-12s|%9$-10s|\n";
     	System.out.println("\n[USUARIOS]");
@@ -46,7 +45,7 @@ public class clsTestUsuarioMant {
         System.out.format(sFormato,"ID","Correo","ApellidoPaterno","ApellidoMaterno","Nombres","F.Crea","U.Crea","F.Modif","U.Modif");
     	System.out.println("====================================================================================================================================================");
     	for( clsUsuario oUsuario  : oUsuarioMant.usuarios)
-            System.out.format(sFormato,oUsuario.get_iIDUsuario(),oUsuario.get_sCorreo(),oUsuario.get_sApellidoPaterno(),oUsuario.get_sApellidoMaterno(),oUsuario.get_sNombres(),oUsuario.get_dFechaCreacion(),oUsuario.get_iIDUsuarioCreacion(),oUsuario.get_dFechaModificacion(),oUsuario.get_iIDUsuarioModificacion());    		
+        System.out.format(sFormato,oUsuario.get_iIDUsuario(),oUsuario.get_sCorreo(),oUsuario.get_sApellidoPaterno(),oUsuario.get_sApellidoMaterno(),oUsuario.get_sNombres(),oUsuario.get_dFechaCreacion(),oUsuario.get_iIDUsuarioCreacion(),oUsuario.get_dFechaModificacion(),oUsuario.get_iIDUsuarioModificacion());    		
     	System.out.println("====================================================================================================================================================");
 
     	//Proyectos
@@ -56,7 +55,7 @@ public class clsTestUsuarioMant {
         System.out.format(sFormato,"ID","Descripcion","Cliente","F.Crea","U.Crea","F.Modif","U.Modif");
     	System.out.println("========================================================================================================================================");
     	for( clsProyecto oProyecto  : oProyectoMant.proyectos)
-            System.out.format(sFormato,oProyecto.get_iIDProyecto(),oProyecto.get_sDescripcion(),oProyecto.get_sCliente(),oProyecto.get_dFechaCreacion(),oProyecto.get_iIDUsuarioCreacion(),oProyecto.get_dFechaModificacion(),oProyecto.get_iIDUsuarioModificacion());    			
+        System.out.format(sFormato,oProyecto.get_iIDProyecto(),oProyecto.get_sDescripcion(),oProyecto.get_sCliente(),oProyecto.get_dFechaCreacion(),oProyecto.get_iIDUsuarioCreacion(),oProyecto.get_dFechaModificacion(),oProyecto.get_iIDUsuarioModificacion());    			
     	System.out.println("========================================================================================================================================");
 }
 	
@@ -66,7 +65,7 @@ public class clsTestUsuarioMant {
         System.out.println("Agregar Usuario");
         System.out.println("===============");
         // Arrange
-        int viIDUsuario = 1;
+        int viIDUsuario = 7;
     	String vsCorreo = "juan.perez@gmail.com";
     	String vsApellidoPaterno = "Perez";
     	String vsApellidoMaterno = "Lopez";
@@ -80,21 +79,20 @@ public class clsTestUsuarioMant {
         // Act
         oUsuarioMant.pAgregar(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);    
         //Assert
-        clsUsuario oUsuario = oUsuarioMant.faBuscarPk(viIDUsuario);
-        assertNotNull(oUsuario);
+        clsUsuario oUsuarioNuevo = oUsuarioMant.faBuscarPk(viIDUsuario);        
+        assertNotNull(oUsuarioNuevo);
         System.out.println("<<Resultados>>");
-        System.out.println("IDUsuario: "  + oUsuario.get_iIDUsuario()); // imprime los valores grabados
-        System.out.println("Correo: " + oUsuario.get_sCorreo()); // imprime los valores grabados
-        System.out.println("ApellidoPaterno: " + oUsuario.get_sApellidoPaterno()); // imprime los valores grabados
-        System.out.println("ApellidoMaterno: " + oUsuario.get_sApellidoMaterno()); // imprime los valores grabados
-        System.out.println("Nombres: " + oUsuario.get_sNombres()); // imprime los valores grabados
-        System.out.println("Rol: " + oUsuario.get_iRol()); // imprime los valores grabados
-        System.out.println("FechaCreacion: " + oUsuario.get_dFechaCreacion()); // imprime los valores grabados
-        System.out.println("FechaModificacion: " + oUsuario.get_dFechaModificacion()); // imprime los valores grabados
-        System.out.println("UsuarioCreacion: " + oUsuario.get_iIDUsuarioCreacion()); // imprime los valores grabados
-        System.out.println("UsuarioModificacion: " + oUsuario.get_iIDUsuarioModificacion()); // imprime los valores grabados
+        //Usuario
+        sFormato = "|%1$-4s|%2$-30s|%3$-20s|%4$-20s|%5$-20s|%6$-12s|%7$-10s|%8$-12s|%9$-10s|\n";
+    	System.out.println("\n[USUARIOS]");
+    	System.out.println("====================================================================================================================================================");
+        System.out.format(sFormato,"ID","Correo","ApellidoPaterno","ApellidoMaterno","Nombres","F.Crea","U.Crea","F.Modif","U.Modif");
+    	System.out.println("====================================================================================================================================================");
+    	for(clsUsuario oUsuario : oUsuarioMant.usuarios)
+        System.out.format(sFormato,oUsuario.get_iIDUsuario(),oUsuario.get_sCorreo(),oUsuario.get_sApellidoPaterno(),oUsuario.get_sApellidoMaterno(),oUsuario.get_sNombres(),oUsuario.get_dFechaCreacion(),oUsuario.get_iIDUsuarioCreacion(),oUsuario.get_dFechaModificacion(),oUsuario.get_iIDUsuarioModificacion());    		
+    	System.out.println("====================================================================================================================================================");
         
-           }
+       }
 	
 	@Test
 	//errores de validacion
