@@ -22,15 +22,15 @@ public class clsTestUsuarioMant {
 
 	@Before
     public void initObjects() {
-        oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","WONG","03/03/2012","03/03/2012",1,1);				
-        oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","UPC","03/03/2012","03/03/2012",1,1);				
-        oProyectoMant.pAgregar(3,"CONTROL DE VISITAS","SARITA COLONIA","03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","Leon","Alegria","Romulo",1,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","Humala","Taso","Antauro",2,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","Quimper","Herrera","Alberto",3,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","Denegri","Santagadea","Marco Aurelio",1,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","a",3,"03/03/2012","03/03/2012",1,1);				
         oUsuarioMant.pAgregar(6,"kenji.fujimori@hotmail.com","Fujimori","Higuchi","Kenji",3,"03/03/2012","03/03/2012",1,1);				
+		oProyectoMant.pAgregar(1,"GESTION DE PROVEEDORES","WONG","03/03/2012","03/03/2012",1,1);				
+        oProyectoMant.pAgregar(2,"MODULO DE MANTENIMIENTO","UPC","03/03/2012","03/03/2012",1,1);				
+        oProyectoMant.pAgregar(3,"CONTROL DE VISITAS","SARITA COLONIA","03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,1,"03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,2,"03/03/2012","03/03/2012",1,1);				
         oProyectoUsuarioMant.pAgregar(1,3,"03/03/2012","03/03/2012",1,1);				
@@ -95,6 +95,44 @@ public class clsTestUsuarioMant {
         System.out.println("UsuarioModificacion: " + oUsuario.get_iIDUsuarioModificacion()); // imprime los valores grabados
         
            }
+	
+	@Test
+	//errores de validacion
+    public void NoDebeCrearUsuario(){
+        System.out.println("");
+        System.out.println("Agregar Usuario");
+        System.out.println("===============");
+        // Arrange
+        int viIDUsuario = 1;
+    	String vsCorreo = "juan.perez#gmail.com";
+    	String vsApellidoPaterno = "";
+    	String vsApellidoMaterno = "Lopez";
+    	String vsNombres = "Juan";
+    	int viRol = 5;
+    	String vdFechaCreacion = "13/13/2012";
+    	String vdFechaModificacion = "05/04/2012";
+    	int viIDUsuarioCreacion = 7;
+    	int viIDUsuarioModificacion = 1;    	
+        //clsUsuarioMant oUsuarioMant = new clsUsuarioMant();
+        // Act
+        oUsuarioMant.pAgregar(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);    
+        //Assert
+        clsUsuario oUsuario = oUsuarioMant.faBuscarPk(viIDUsuario);
+        assertNotNull(oUsuario);
+        System.out.println("<<Resultados>>");
+        System.out.println("IDUsuario: "  + oUsuario.get_iIDUsuario()); // imprime los valores grabados
+        System.out.println("Correo: " + oUsuario.get_sCorreo()); // imprime los valores grabados
+        System.out.println("ApellidoPaterno: " + oUsuario.get_sApellidoPaterno()); // imprime los valores grabados
+        System.out.println("ApellidoMaterno: " + oUsuario.get_sApellidoMaterno()); // imprime los valores grabados
+        System.out.println("Nombres: " + oUsuario.get_sNombres()); // imprime los valores grabados
+        System.out.println("Rol: " + oUsuario.get_iRol()); // imprime los valores grabados
+        System.out.println("FechaCreacion: " + oUsuario.get_dFechaCreacion()); // imprime los valores grabados
+        System.out.println("FechaModificacion: " + oUsuario.get_dFechaModificacion()); // imprime los valores grabados
+        System.out.println("UsuarioCreacion: " + oUsuario.get_iIDUsuarioCreacion()); // imprime los valores grabados
+        System.out.println("UsuarioModificacion: " + oUsuario.get_iIDUsuarioModificacion()); // imprime los valores grabados
+        
+           }
+		
 	@Test
     public void DebeEliminarUsuario(){
         System.out.println("");
