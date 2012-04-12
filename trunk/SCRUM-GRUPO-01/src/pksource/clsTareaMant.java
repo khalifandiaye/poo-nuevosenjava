@@ -116,6 +116,8 @@ public class clsTareaMant {
 		
 		if (fbValidar(vfPorcentajeAvance,vdFechaInicio,vdFechaFin)==false)
 			return;
+		if (fbValidarQA(vsEstado,vsTipo,viIDTareaPadre)==false)
+			return;
 		
 		if (faBuscarPkPos(viIDTarea) != -1) {
 			clsTarea tarea = new clsTarea(viIDTarea,viIDHistoria,vsDescripcion,vdFechaInicio,
