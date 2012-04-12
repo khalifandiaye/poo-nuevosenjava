@@ -87,6 +87,7 @@ public class clsHistoriaMant {
 			System.out.println("Codigo: " + historias.get(i).getiIDhistoria());
 			System.out.println("Codigo Proyecto :"
 					+ historias.get(i).getiIDProducto());
+			System.out.println("Descripción :" + historias.get(i).getvDescripcion());
 			System.out.println("IDOrdenProridadEstimada :"
 					+ historias.get(i).getiOrdenPrioridadEstimada());
 			System.out.println("IDOrdenPrioridadReal"
@@ -95,6 +96,9 @@ public class clsHistoriaMant {
 			System.out.println("DuraciónDias :"
 					+ historias.get(i).getiDuracionDias());
 			System.out.println("Costo :" + historias.get(i).getfCosto());
+			System.out.println("Fecha de Creación :" + historias.get(i).getdFechaCreacion());
+			System.out.println("Usuario :" + historias.get(i).getiIDUsuarioCreacion());
+			System.out.println("Fecha de Modificacón :" + historias.get(i).getdFechaModificacion());
 			System.out
 					.println("-----------------------------------------------------------------------------");
 		}
