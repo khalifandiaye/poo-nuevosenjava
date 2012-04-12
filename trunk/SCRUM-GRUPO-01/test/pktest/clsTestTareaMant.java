@@ -46,7 +46,21 @@ public class clsTestTareaMant {
 
 	}
 	
-	
+	private void Consultar(){
+	       String sFormato;
+
+	       
+	        sFormato = "|%1$-4s|%2$-30s|%3$-30s|%4$-30s|%5$-20s|%6$-12s|%7$-10s|\n";
+	    	System.out.println("\n[TAREAS]");
+	    	System.out.println("====================================================================================================================================================");
+	        System.out.format(sFormato,"ID","Descripción","Fecha Inicio","Fecha Fin","Duración","Tipo","Estado");
+	    	System.out.println("====================================================================================================================================================");
+	    	for( clsTarea oTarea  : oTareaMant.tareas)
+	            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),oTarea.get_dFechaInicio(),
+	            		oTarea.get_dFechaFin(),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
+	    	System.out.println("====================================================================================================================================================");
+
+	}
 	@Test
 	public void DebeAgregarTarea(){
 		System.out.println("");
@@ -365,6 +379,10 @@ public class clsTestTareaMant {
 		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug sin Tarea Padre",vdFechaInicio,vdFechaFin, 
 				24,	"PD", "B",0,0,vdFechaCreacion,null,	1, 0);
 		
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
 		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
 		assertNotNull(oTarea);
 	}
@@ -386,6 +404,10 @@ public class clsTestTareaMant {
 		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug con Tarea Padre del Tipo Bug",vdFechaInicio,vdFechaFin, 
 				24,	"PD", "B",5,0,vdFechaCreacion,null,	1, 0);
 		
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
 		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
 		assertNotNull(oTarea);
 		
@@ -393,17 +415,83 @@ public class clsTestTareaMant {
 
 	@Test
 	public void DebeGrabarTareasNormalessinTareaPadre(){
+		Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+        
+		//Date vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+        
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+        int viIDTarea=13;
+		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug con Tarea Padre del Tipo Bug",vdFechaInicio,vdFechaFin, 
+				24,	"PD", "N",5,0,vdFechaCreacion,null,	1, 0);
 		
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		assertNotNull(oTarea);
 		
 	}
 
 	@Test
 	public void DebeActualizarSoloTareasNormalesaEstadosEnRevision(){
 		
+		Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+        
+		//Date vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+        
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+        int viIDTarea=5;
+        String sNuevoEstado="ER";
+		oTareaMant.pEditar(viIDTarea, 2, "Tarea Bug a Estado 'En Revisión'",vdFechaInicio,vdFechaFin, 
+				24,	sNuevoEstado, "B",4,0,vdFechaCreacion,null,	1, 0);
+		
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		assertNotNull(oTarea); // existe el registro
+		//Confirmacion que la tarea ha sido editada
+		
+		System.out.println("");
+		System.out.println("LUEGO DE EDICIÓN...");
+		Consultar();
+		assertEquals(sNuevoEstado,oTarea.get_sEstado());
+		
 		
 	}
 	@Test
 	public void DebeCrearunaTareaBugcuyaTareaPadretengaEstadoEnRevision(){
+		Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+        
+		//Date vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+        
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+        int viIDTarea=14;
+		oTareaMant.pAgregar(viIDTarea, 1, "Tarea Bug cuya Tarea Padre del no está en estado 'En Revisión'",vdFechaInicio,vdFechaFin, 
+				24,	"PD", "B",3,0,vdFechaCreacion,null,	1, 0);
+		
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		assertNotNull(oTarea);
 		
 	}
 
