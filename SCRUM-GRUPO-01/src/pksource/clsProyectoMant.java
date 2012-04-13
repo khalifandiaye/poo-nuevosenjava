@@ -10,6 +10,17 @@ public class clsProyectoMant {
 		proyectos = new ArrayList<clsProyecto>();
 	}
 	
+	public void pListaProyectos (){
+		String sFormato;
+        sFormato = "|%1$-4s|%2$-50s|%3$-30s|%4$-12s|%5$-10s|%6$-12s|%7$-10s|\n";
+    	System.out.println("\n[PROYECTOS]");
+    	System.out.println("========================================================================================================================================");
+        System.out.format(sFormato,"ID","Descripcion","Cliente","F.Crea","U.Crea","F.Modif","U.Modif");
+    	System.out.println("========================================================================================================================================");
+    	for( clsProyecto oProyecto  : proyectos)
+        System.out.format(sFormato,oProyecto.get_iIDProyecto(),oProyecto.get_sDescripcion(),oProyecto.get_sCliente(),oProyecto.get_dFechaCreacion(),oProyecto.get_iIDUsuarioCreacion(),oProyecto.get_dFechaModificacion(),oProyecto.get_iIDUsuarioModificacion());    			
+    	System.out.println("========================================================================================================================================");		
+	}
 	public void pAgregar(int viIDProyecto, String vsDescripcion, String vsCliente, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioMoficacion){
 		if (faBuscar(vsDescripcion) == null){		
 			clsProyecto nuevoProyecto = new clsProyecto(viIDProyecto,vsDescripcion,vsCliente,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioMoficacion);
