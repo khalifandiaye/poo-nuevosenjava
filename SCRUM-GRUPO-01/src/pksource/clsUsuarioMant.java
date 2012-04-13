@@ -3,6 +3,7 @@ package pksource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
 
 public class clsUsuarioMant {
 
@@ -12,35 +13,52 @@ public class clsUsuarioMant {
 		usuarios = new ArrayList<clsUsuario>();
 	}
 	
-	public void pAgregar(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
+	public boolean pAgregar(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioModificacion){
 		if (fbValidaciones(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol,vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion)){		
 			clsUsuario nuevoUsuario = new clsUsuario(viIDUsuario, vsCorreo, vsApellidoPaterno, vsApellidoMaterno, vsNombres, viRol, vdFechaCreacion, vdFechaModificacion, viIDUsuarioCreacion, viIDUsuarioModificacion);
 			usuarios.add(nuevoUsuario);
 			System.out.println("Usuario Agregado");
+			return true;
 		}		
 		else
 			System.out.println("Usuario No Agregado");
+			return false;
 	}
 	
-	public void pEliminar(int viIDUsuario){
+	public boolean pEliminar(int viIDUsuario, ClsUsuariosTareaMant oUsuariosTareaMant){
 		if (faBuscarPkPos(viIDUsuario) != -1) {
-			usuarios.remove(faBuscarPkPos(viIDUsuario));
-			System.out.println("Usuario Borrado");
+			if (oUsuariosTareaMant.faBuscarFkPos(viIDUsuario) == -1)
+			{
+				usuarios.remove(faBuscarPkPos(viIDUsuario));
+				System.out.println("Usuario Borrado");
+				return true;
+				}
+			else
+			{
+				System.out.println("Error : Usuario esta asignado a tareas");
+				return false;
+			}
+			//}
+			//else
+			//	System.out.println("Error: El usuario tiene tareas asignadas");			
 		}
 		else
-			System.out.println("Usuario No Borrado");		
+			System.out.println("Usuario No Borrado");
+			return false;
 	}
 	
-	public void pEditar(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol, String vdFechaModificacion, int viIDUsuarioModificacion){
+	public boolean pEditar(int viIDUsuario, String vsCorreo, String vsApellidoPaterno, String vsApellidoMaterno, String vsNombres, int viRol, String vdFechaModificacion, int viIDUsuarioModificacion){
 		if (faBuscarPkPos(viIDUsuario) != -1) {
 			clsUsuario oUsuario_orig;
 			oUsuario_orig = faBuscarPk(viIDUsuario); 
 			clsUsuario oUsuario_edit = new clsUsuario(oUsuario_orig.get_iIDUsuario(),vsCorreo,vsApellidoPaterno,vsApellidoMaterno,vsNombres,viRol,oUsuario_orig.get_dFechaCreacion(),vdFechaModificacion,oUsuario_orig.get_iIDUsuarioCreacion(),viIDUsuarioModificacion);
 			usuarios.set(faBuscarPkPos(viIDUsuario),oUsuario_edit);
 			System.out.println("Usuario Editado");
+			return true;
 		}
 		else
-			System.out.println("Proyecto No Editado");		
+			System.out.println("Usuario No Editado");
+			return false;
 	}
 
 	public clsUsuario faBuscar(String vsCorreo){
@@ -75,7 +93,7 @@ public class clsUsuarioMant {
             if (oUsuario.get_iIDUsuario() == viIDUsuario)
                 return i;
 		}
-        return i;
+        return -1;
 	}
 
 	public boolean isDate(String fechax) {
