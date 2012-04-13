@@ -64,7 +64,7 @@ public class clsSprint {
 		return dFechaCreacion;
 	}
 
-	public Date get_sFechaModificacion(){
+	public Date get_dFechaModificacion(){
 		return dFechaModificacion;
 	}
 
