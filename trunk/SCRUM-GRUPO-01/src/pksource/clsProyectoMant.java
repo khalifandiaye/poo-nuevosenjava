@@ -35,71 +35,26 @@ public class clsProyectoMant {
 		return false;
 	}
 	
-	public boolean pEliminar(int viIDProyecto){
+	public boolean pEliminar(int viIDProyecto, clsHistoriaMant oHistoriaMant){
 		if (faBuscarPkPos(viIDProyecto) != -1) {
-			if (oUsuariosTareaMant.faBuscarFkPos(viIDUsuario) == -1)
+			if (oHistoriaMant.faBuscarFkPos(viIDProyecto) == -1)
 			{
-				usuarios.remove(faBuscarPkPos(viIDUsuario));
-				System.out.println("Usuario Borrado");
+				proyectos.remove(faBuscarPkPos(viIDProyecto));
+				System.out.println("Proyecto Borrado");
 				return true;
 				}
 			else
 			{
-				System.out.println("Error : Usuario esta asignado a tareas");
-				System.out.println("Usuario No Borrado");
+				System.out.println("Error : El proyecto tiene historias asignadas");
+				System.out.println("Proyecto No Borrado");
 				return false;
 			}
 		}
 		else
-			System.out.println("Usuario No Borrado");
+			System.out.println("Proyecto No Borrado");
 			return false;
 
-		
-		
-		
-		
-		
-		
-		if (faBuscarPkPos(viIDProyecto) != -1) {
-			proyectos.remove(faBuscarPkPos(viIDProyecto));
-			System.out.println("Proyecto Borrado");
-			return true;
-		}
-		System.out.println("Proyecto No Borrado");
-		return false;
-	}
-	
-
-	
-	
-	
-	
-	if (faBuscarPkPos(viIDUsuario) != -1) {
-		if (oUsuariosTareaMant.faBuscarFkPos(viIDUsuario) == -1)
-		{
-			usuarios.remove(faBuscarPkPos(viIDUsuario));
-			System.out.println("Usuario Borrado");
-			return true;
-			}
-		else
-		{
-			System.out.println("Error : Usuario esta asignado a tareas");
-			System.out.println("Usuario No Borrado");
-			return false;
-		}
-	}
-	else
-		System.out.println("Usuario No Borrado");
-		return false;
-
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	public boolean pEditar(int viIDProyecto, String vsDescripcion, String vsCliente, String vdFechaModificacion, int viIDUsuarioModificacion){
 		if (faBuscarPkPos(viIDProyecto) != -1) {
 			clsProyecto oProyecto_orig;
