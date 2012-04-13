@@ -52,6 +52,18 @@ public class clsHistoriaMant {
 		return null;
 	}
 
+	public int faBuscarFkPos(int viIDProyecto){
+		int i = -1;
+		for (clsHistoria historia : historias)
+		{
+        	i++;
+            if (historia.getiIDProducto() == viIDProyecto)
+                return i;
+		}
+        return -1;
+	}
+
+	
 	public clsHistoria buscarHistoriaxIDProducto(int viIDProducto) {
 		// Busqueda secuencial
 		for (clsHistoria historia : historias) {
