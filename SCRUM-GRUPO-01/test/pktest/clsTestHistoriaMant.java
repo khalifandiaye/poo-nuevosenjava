@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import pksource.clsHistoria;
 import pksource.clsHistoriaMant;
+import pksource.clsProyecto;
 import pksource.clsProyectoMant;
 import pksource.clsTarea;
 import pksource.clsTareaMant;
@@ -46,8 +47,8 @@ public class clsTestHistoriaMant {
 		
 		//Historias
 		adm.pRegistrarHistoria(1, 1, "Requerimiento 1", 1, 1, "A", 5, 0f,Fecha, 1, Fecha, 1);
-		adm.pRegistrarHistoria(2, 1, "Requerimiento 2", 2, 2, "A", 10, 0f,Fecha, 1, Fecha, 1);
-		adm.pRegistrarHistoria(3, 1, "Requerimiento 3", 3, 3, "A", 15, 0f,Fecha, 1, Fecha, 1);
+		adm.pRegistrarHistoria(2, 2, "Requerimiento 2", 2, 2, "A", 10, 0f,Fecha, 1, Fecha, 1);
+		adm.pRegistrarHistoria(3, 3, "Requerimiento 3", 3, 3, "A", 15, 0f,Fecha, 1, Fecha, 1);
 		//Proyectos
 		oProyectoMant.pAgregar(1, "GESTION DE PROVEEDORES", "WONG",	"03/03/2012", "03/03/2012", 1, 1);
 		oProyectoMant.pAgregar(2, "MODULO DE MANTENIMIENTO", "UPC",	"03/03/2012", "03/03/2012", 1, 1);
@@ -75,6 +76,33 @@ public class clsTestHistoriaMant {
 		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
 	}
 
+	@Test
+	public void RegistrarHistoria() {
+		System.out.println("//Registro de Historia de Usuario");
+
+		// Registro 4
+		iIDhistoria = 4;
+		iIdProducto = 3;
+		vDescripcion="Requerimiento 4";
+		iOrdenPrioridadEstimada = 1;
+		iOrdenPrioridadReal = 3;
+		cEstado = "A";
+		iDuracionDias = 5;
+		fCosto = 12.00f;
+		dFechaCreacion=Fecha;
+		iIDUsuarioCreacion=1;
+		dFechaModificacion=Fecha;
+		iIDUsuarioModificacion=1;
+
+		// Registra, valida que no exista y que se hayan ingresado los datos
+		// necesarios.
+		
+			assertTrue(adm.pRegistrarHistoria(iIDhistoria, iIdProducto,vDescripcion,
+					iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
+					iDuracionDias, fCosto,dFechaCreacion,iIDUsuarioCreacion,dFechaModificacion,iIDUsuarioModificacion));
+		// adm.printHistoriaUsuario();
+	}
+	
 	@Test
 	public void RegistrarHistoriaConIDProductoInexistente() {
 		System.out.println("//Registro de Historia de Usuario");
@@ -204,6 +232,37 @@ public class clsTestHistoriaMant {
 	}
 	
 	@Test
+	public void NOEliminarHistoriaUsuario() {
+		System.out.println("//Eliminación de Historia si no tiene tareas asignadas");
+
+		adm.printHistoriaUsuario();
+		
+		ArrayList<clsTarea> tareas;
+		tareas=oTareaMant.tareas;
+		
+		int count=0;
+		for( clsTarea tarea : tareas)
+		{
+            if (tarea.get_iIDHistoria() == 3)
+            {
+            	count=count+1;
+            }                
+		}		
+		
+		if (count==0)
+		{
+			assertTrue(adm.eliminarHistoriaUsuario(3));
+			System.out.println("Despues de la Eliminación:");
+			adm.printHistoriaUsuario();
+		}
+		else
+		{
+			System.out.println("La Historia contiene tareas");
+		}
+		
+	}
+	
+	@Test
 	public void ListaTareas()
 	{
 		
@@ -234,6 +293,46 @@ public class clsTestHistoriaMant {
 				}			
 			}		    	
 		}
+		 System.out.println("====================================================================================================================================================");
+	}
+	
+	@Test
+	public void ListaProyectos()
+	{		
+		ArrayList<clsProyecto> proyectos;
+		proyectos=oProyectoMant.proyectos;
+		ArrayList<clsHistoria> historias;
+		historias=adm.historias;
+		ArrayList<clsTarea> tareas;
+		tareas=oTareaMant.tareas;
+		
+		String sFormato;
+		System.out.println("\n[LISTA DE PROYECTOS]");
+		sFormato = "|%1$-20s|%2$-30s|%3$-30s|%4$-30s|%5$-30s|\n";
+	    System.out.println("\n[HISTORIAS]");
+	    System.out.println("====================================================================================================================================================");
+	   
+	    for (clsProyecto proyecto : proyectos)
+	    {
+	    	System.out.println("\n PROYECTO:"+ proyecto.get_sDescripcion());	    
+	    
+			for (clsHistoria historia : historias) 
+			{		
+				if (proyecto.get_iIDProyecto()==historia.getiIDProducto())
+				{
+					System.out.println("\n HISTORIA:"+historia.getvDescripcion());
+					 System.out.format(sFormato,"TAREA","FECHA INICIO","FECHA FIN","DURACION","ESTADO");
+					for (clsTarea tarea : tareas)
+					{				
+						if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
+						{					
+							System.out.format(sFormato,tarea.get_sDescripcion(),tarea.get_dFechaInicio(),tarea.get_dFechaFin(),tarea.get_iDuracionHoras(),tarea.get_sEstado());
+						 
+						}			
+					}	
+				}
+			}
+	    }
 		 System.out.println("====================================================================================================================================================");
 	}
 }
