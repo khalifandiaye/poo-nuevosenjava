@@ -57,6 +57,16 @@ public class clsUsuarioMant {
         return null;
 	}
 
+	public String fsNombreUsuario(int viIDUsuario){
+		
+		clsUsuario oBuscarUsuario = faBuscarPk(viIDUsuario);
+		if (oBuscarUsuario!=null)
+			return oBuscarUsuario.get_sNombres()+" "+oBuscarUsuario.get_sApellidoPaterno();
+		
+		return "";
+		
+	}
+
 	public int faBuscarPkPos(int viIDUsuario){
 		int i = -1;
 		for (clsUsuario oUsuario  : usuarios)
