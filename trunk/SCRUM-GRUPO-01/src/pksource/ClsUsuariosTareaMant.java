@@ -96,7 +96,25 @@ public ArrayList<ClsUsuariosTarea> usuariostarea;
 		
 	}
 
-	public void pEliminar(int viIDTarea,int viIDUsuario){
+	private boolean fbValidarEliminar(int viIDTarea,clsTareaMant oTareaMant){
+		
+		//DebeEliminarUsuariosaTareasqueSiguenPendientes
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		if (oTarea.get_sEstado()!="PD"){
+			System.out.println("Debe Eliminar Usuarios a Tareas que Siguen Pendientes");
+			return false;
+		}		
+		
+		return true;
+	}
+
+	
+	
+	public void pEliminar(int viIDTarea,int viIDUsuario,clsTareaMant oTareaMant){
+		
+		if (fbValidarEliminar(viIDTarea,oTareaMant)==false)
+			return;
+		
 		if (faBuscarPkPos(viIDTarea,viIDUsuario) != -1) {
 			usuariostarea.remove(faBuscarPkPos(viIDTarea,viIDUsuario));
 			System.out.println("Usuario eliminado de la tarea");
