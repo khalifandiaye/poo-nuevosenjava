@@ -223,14 +223,15 @@ public class clsTestTareaMant {
 		int viIDUsuarioCreacion=1;
 		int viIDUsuarioModificacion=0;
         //Editar
-		clsTareaMant oTareaMant = new clsTareaMant();
+		//clsTareaMant oTareaMant = new clsTareaMant();
+		/*
 		oTareaMant.pAgregar(viIDTarea, viIDHistoria, vsDescripcion, 
 				vdFechaInicio, vdFechaFin, viDuracionHoras, 
 				vsEstado, vsTipo, viIDTareaPadre, 
 				vfPorcentajeAvance, vdFechaCreacion, vdFechaModificacion, 
 				viIDUsuarioCreacion, viIDUsuarioModificacion);
-		
-		vsEstado="PS";//En Proceso
+		*/
+		vsEstado="EP";//En Proceso
 		oTareaMant.pEditar(viIDTarea, viIDHistoria, vsDescripcion, 
 				vdFechaInicio, vdFechaFin, viDuracionHoras, 
 				vsEstado, vsTipo, viIDTareaPadre, 

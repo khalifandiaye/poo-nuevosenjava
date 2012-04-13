@@ -116,5 +116,60 @@ public class ClsTestUsuariosTareaMant {
 		assertNotNull(oUsuarioTarea);
 		
 	}
+	
+	@Test
+	public void DebeEliminarUsuariosaTareasqueSiguenPendientes(){
+
+        int viIDTarea=1;
+        int viIDUsuario=1;
+        
+        
+        
+        int viIDHistoria=1;
+        String vsDescripcion="Tarea 2";
+        //String vdFechaInicio="07/04/2012";
+        Calendar Cal = Calendar.getInstance();
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaInicio=Cal.getTime();
+
+		//String vdFechaFin="08/04/2012";
+        Cal.set(2012,3,8);//08/04/2012
+        Date vdFechaFin=Cal.getTime();
+
+        int viDuracionHoras=24;
+        String vsEstado="EP";//En Proceso
+        String vsTipo="N";//Normal
+		int viIDTareaPadre=0;
+		float vfPorcentajeAvance=0; 
+		//String vdFechaCreacion="07/04/2012";
+        Cal.set(2012,3,7);//07/04/2012
+        Date vdFechaCreacion=Cal.getTime();
+
+		Date vdFechaModificacion=null;
+		int viIDUsuarioCreacion=1;
+		int viIDUsuarioModificacion=0;
+        
+		
+		oTareaMant.pEditar(viIDTarea, viIDHistoria, vsDescripcion, 
+				vdFechaInicio, vdFechaFin, viDuracionHoras, 
+				vsEstado, vsTipo, viIDTareaPadre, 
+				vfPorcentajeAvance, vdFechaCreacion, vdFechaModificacion, 
+				viIDUsuarioCreacion, viIDUsuarioModificacion);
+
+        
+        
+        
+        oUsuariosTareaMant.pEliminar(viIDTarea, viIDUsuario,oTareaMant);
+        
+		System.out.println("");
+		System.out.println("LUEGO DE ELIMINACIÓN...");
+		Consultar();
+
+		//Buscar
+		ClsUsuariosTarea oUsuarioTarea = oUsuariosTareaMant.faBuscarPk(viIDTarea,viIDUsuario);
+		//Confirmacion
+		assertNull(oUsuarioTarea);
+
+	}
 
 }
