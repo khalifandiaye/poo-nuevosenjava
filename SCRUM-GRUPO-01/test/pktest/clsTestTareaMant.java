@@ -34,30 +34,36 @@ public class clsTestTareaMant {
        String sFormato;
 
        
-        sFormato = "|%1$-4s|%2$-30s|%3$-30s|%4$-30s|%5$-20s|%6$-12s|%7$-10s|\n";
+        sFormato = "|%1$-4s|%2$-30s|%3$-15s|%4$-15s|%5$-20s|%6$-12s|%7$-10s|\n";
     	System.out.println("\n[TAREAS]");
     	System.out.println("====================================================================================================================================================");
         System.out.format(sFormato,"ID","Descripción","Fecha Inicio","Fecha Fin","Duración","Tipo","Estado");
     	System.out.println("====================================================================================================================================================");
     	for( clsTarea oTarea  : oTareaMant.tareas)
-            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),oTarea.get_dFechaInicio(),
-            		oTarea.get_dFechaFin(),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
+            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),fsFormatoFecha(oTarea.get_dFechaInicio()),
+            		fsFormatoFecha(oTarea.get_dFechaFin()),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
     	System.out.println("====================================================================================================================================================");
 
+	}
+
+	private String fsFormatoFecha(Date vdFecha){
+		java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat("dd/MM/yyyy");
+		String vsFecha = sdf.format(vdFecha);
+		return vsFecha;		
 	}
 	
 	private void Consultar(){
 	       String sFormato;
 
 	       
-	        sFormato = "|%1$-4s|%2$-30s|%3$-30s|%4$-30s|%5$-20s|%6$-12s|%7$-10s|\n";
+	        sFormato = "|%1$-4s|%2$-30s|%3$-15s|%4$-15s|%5$-20s|%6$-12s|%7$-10s|\n";
 	    	System.out.println("\n[TAREAS]");
 	    	System.out.println("====================================================================================================================================================");
 	        System.out.format(sFormato,"ID","Descripción","Fecha Inicio","Fecha Fin","Duración","Tipo","Estado");
 	    	System.out.println("====================================================================================================================================================");
 	    	for( clsTarea oTarea  : oTareaMant.tareas)
-	            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),oTarea.get_dFechaInicio(),
-	            		oTarea.get_dFechaFin(),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
+	            System.out.format(sFormato,oTarea.get_iIDTarea(),oTarea.get_sDescripcion(),fsFormatoFecha(oTarea.get_dFechaInicio()),
+	            		fsFormatoFecha(oTarea.get_dFechaFin()),oTarea.get_iDuracionHoras(),oTarea.get_sTipo(),oTarea.get_sEstado());    		
 	    	System.out.println("====================================================================================================================================================");
 
 	}
@@ -264,7 +270,7 @@ public class clsTestTareaMant {
         String vsEstado="PD";//Pendiente
         String vsTipo="N";//Normal
 		int viIDTareaPadre=0;
-		float vfPorcentajeAvance=0; 
+		float vfPorcentajeAvance=102; 
 		//String vdFechaCreacion="07/04/2012";
         Cal.set(2012,3,7);//07/04/2012
         Date vdFechaCreacion=Cal.getTime();
@@ -289,6 +295,10 @@ public class clsTestTareaMant {
 				vfPorcentajeAvance, vdFechaCreacion, vdFechaModificacion, 
 				viIDUsuarioCreacion, viIDUsuarioModificacion);
 
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
 		//Buscar
 		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
 		assertNotNull(oTarea); // existe el registro
@@ -332,12 +342,12 @@ public class clsTestTareaMant {
 
         //Editar
 		clsTareaMant oTareaMant = new clsTareaMant();
-		oTareaMant.pAgregar(viIDTarea, viIDHistoria, vsDescripcion, 
+		/*oTareaMant.pAgregar(viIDTarea, viIDHistoria, vsDescripcion, 
 				vdFechaInicio, vdFechaFin, viDuracionHoras, 
 				vsEstado, vsTipo, viIDTareaPadre, 
 				vfPorcentajeAvance, vdFechaCreacion, vdFechaModificacion, 
 				viIDUsuarioCreacion, viIDUsuarioModificacion);
-
+*/
 		
         Cal.set(2012,3,8);//08/04/2012
         vdFechaInicio=Cal.getTime();
@@ -350,6 +360,10 @@ public class clsTestTareaMant {
 				vfPorcentajeAvance, vdFechaCreacion, vdFechaModificacion, 
 				viIDUsuarioCreacion, viIDUsuarioModificacion);
 
+		System.out.println("");
+		System.out.println("LUEGO DE GRABACIÓN...");
+		Consultar();
+		
 		//Buscar
 		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
 		assertNotNull(oTarea); // existe el registro
