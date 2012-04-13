@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class clsHistoriaMant {
 
-	private ArrayList<clsHistoria> historias;
+	public ArrayList<clsHistoria> historias;
 
 	public clsHistoriaMant() {
 		// Creando la coleccion de historias
@@ -82,26 +82,21 @@ public class clsHistoriaMant {
 
 	public void printHistoriaUsuario() {
 		int i;
+		String sFormato;
+	    
+	    sFormato = "|%1$-10s|%2$-30s|%3$-20s|%4$-25s|%5$-25s|%6$-10s|%7$-10s|%8$-9s|\n";
+	    System.out.println("\n[HISTORIAS]");	    
+    	System.out.println("====================================================================================================================================================");
+        System.out.format(sFormato,"IDUSUARIO","IDPRODUCTO","HISTORIA","PRIORIDADESTIMADA","PRIORIDADREAL","DURACION","ESTADO","COSTO");
+    	System.out.println("====================================================================================================================================================");
+    	
 
 		for (i = 0; i < historias.size(); i++) {
-			System.out.println("Codigo: " + historias.get(i).getiIDhistoria());
-			System.out.println("Codigo Proyecto :"
-					+ historias.get(i).getiIDProducto());
-			System.out.println("Descripción :" + historias.get(i).getvDescripcion());
-			System.out.println("IDOrdenProridadEstimada :"
-					+ historias.get(i).getiOrdenPrioridadEstimada());
-			System.out.println("IDOrdenPrioridadReal"
-					+ historias.get(i).getiOrdenPrioridadReal());
-			System.out.println("Estado: " + historias.get(i).getcEstado());
-			System.out.println("DuraciónDias :"
-					+ historias.get(i).getiDuracionDias());
-			System.out.println("Costo :" + historias.get(i).getfCosto());
-			System.out.println("Fecha de Creación :" + historias.get(i).getdFechaCreacion());
-			System.out.println("Usuario :" + historias.get(i).getiIDUsuarioCreacion());
-			System.out.println("Fecha de Modificacón :" + historias.get(i).getdFechaModificacion());
-			System.out
-					.println("-----------------------------------------------------------------------------");
+			System.out.format(sFormato,historias.get(i).getiIDhistoria(),historias.get(i).getiIDProducto(),historias.get(i).getvDescripcion(),
+					historias.get(i).getiOrdenPrioridadEstimada(),historias.get(i).getiOrdenPrioridadReal(),historias.get(i).getcEstado(),
+					historias.get(i).getiDuracionDias(),historias.get(i).getfCosto());			
 		}
+		System.out.println("====================================================================================================================================================");
 	}
 
 	public boolean actualizarHistoriaUsuario(int viIDhistoria,
@@ -129,5 +124,10 @@ public class clsHistoriaMant {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<clsHistoria> RecuperarLista()
+	{
+		return historias;
 	}
 }
