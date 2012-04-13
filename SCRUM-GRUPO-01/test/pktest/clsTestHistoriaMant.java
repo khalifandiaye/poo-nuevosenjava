@@ -47,7 +47,7 @@ public class clsTestHistoriaMant {
 		//Historias
 		adm.pRegistrarHistoria(1, 1, "Requerimiento 1", 1, 1, "A", 5, 0f,Fecha, 1, Fecha, 1);
 		adm.pRegistrarHistoria(2, 1, "Requerimiento 2", 2, 2, "A", 10, 0f,Fecha, 1, Fecha, 1);
-		adm.pRegistrarHistoria(3, 1, "Requerimiento 3", 3, 3, "P", 15, 0f,Fecha, 1, Fecha, 1);
+		adm.pRegistrarHistoria(3, 1, "Requerimiento 3", 3, 3, "A", 15, 0f,Fecha, 1, Fecha, 1);
 		//Proyectos
 		oProyectoMant.pAgregar(1, "GESTION DE PROVEEDORES", "WONG",	"03/03/2012", "03/03/2012", 1, 1);
 		oProyectoMant.pAgregar(2, "MODULO DE MANTENIMIENTO", "UPC",	"03/03/2012", "03/03/2012", 1, 1);
@@ -70,9 +70,9 @@ public class clsTestHistoriaMant {
 		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
 		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
 		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
-		oTareaMant.pAgregar(7, 3, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(8, 3, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
-		oTareaMant.pAgregar(9, 3, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(7, 3, "Tarea 7",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(8, 3, "Tarea 8",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
 	}
 
 	@Test
@@ -216,7 +216,7 @@ public class clsTestHistoriaMant {
 		
 		String sFormato;
 		System.out.println("\n[LISTA DE TAREAS]");
-		sFormato = "|%1$-20s|%2$-30s|%3$-30s|\n";
+		sFormato = "|%1$-20s|%2$-30s|%3$-30s|%4$-30s|%5$-30s|\n";
 	    System.out.println("\n[HISTORIAS]");
 	    System.out.println("====================================================================================================================================================");
 	   
@@ -224,12 +224,12 @@ public class clsTestHistoriaMant {
 		for (clsHistoria historia : historias) 
 		{		
 			System.out.println("\n HISTORIA:"+historia.getvDescripcion());
-			 System.out.format(sFormato,"TAREA","FECHA INICIO","FECHA FIN");
+			 System.out.format(sFormato,"TAREA","FECHA INICIO","FECHA FIN","DURACION","ESTADO");
 			for (clsTarea tarea : tareas)
 			{				
 				if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
 				{					
-					System.out.format(sFormato,tarea.get_sDescripcion(),tarea.get_dFechaInicio(),tarea.get_dFechaFin());
+					System.out.format(sFormato,tarea.get_sDescripcion(),tarea.get_dFechaInicio(),tarea.get_dFechaFin(),tarea.get_iDuracionHoras(),tarea.get_sEstado());
 				 
 				}			
 			}		    	
