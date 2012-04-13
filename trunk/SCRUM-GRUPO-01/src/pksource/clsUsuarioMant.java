@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 public class clsUsuarioMant {
 
-	public ArrayList<clsUsuario> usuarios;
+	public static ArrayList<clsUsuario> usuarios;
 	
 	public clsUsuarioMant(){
 		usuarios = new ArrayList<clsUsuario>();
@@ -79,7 +79,7 @@ public class clsUsuarioMant {
         return null;
 	}
 	
-	public clsUsuario faBuscarPk(int viIDUsuario){
+	public static clsUsuario faBuscarPk(int viIDUsuario){
 		for( clsUsuario oUsuario  : usuarios)
             if (oUsuario.get_iIDUsuario() == viIDUsuario)
                 return oUsuario;
@@ -107,7 +107,7 @@ public class clsUsuarioMant {
         return -1;
 	}
 
-	public boolean isDate(String fechax) {
+	public static boolean isDate(String fechax) {
 	        try {
 	            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-mm-yyyy");
 	            Date fecha = formatoFecha.parse(fechax);
