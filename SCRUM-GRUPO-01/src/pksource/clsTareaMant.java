@@ -33,28 +33,40 @@ public class clsTareaMant {
 		
 		//DebeGrabarTareasNormalessinTareaPadre
 		if (vsTipo=="N"){
-			if (viIDTareaPadre!=0) 
+			if (viIDTareaPadre!=0) {
+				System.out.println("Debe Grabar Tareas Normales sin Tarea Padre");	
 				return false;
+			}
+				
 		}
 		//DebeGrabarTareasBugsconTareaPadreExistentedelTipoNormal
 		if (vsTipo=="B"){
-			if (faBuscarPk(viIDTareaPadre) == null)		
+			if (faBuscarPk(viIDTareaPadre) == null)	{
+				System.out.println("Debe Grabar Tareas Bugs con Tarea Padre Existente del Tipo Normal");
 				return false;
+			}
+				
 			//DebeGrabarTareasBugsconTareaPadre
-			if (viIDTareaPadre==0) 
+			if (viIDTareaPadre==0) {
+				System.out.println("Debe Grabar Tareas Bugs con Tarea Padre");
 				return false;
+			}
+				
 			//DebeActualizarSoloTareasNormalesaEstadosEnRevision
-			if (vsEstado=="ER")
+			if (vsEstado=="ER"){
+				System.out.println("Debe Actualizar sólo Tareas Normales a Estados en Revision");
 				return false;
+			}
+				
 			//DebeCrearunaTareaBugcuyaTareaPadretengaEstadoEnRevision
 			
 			clsTarea oTareaBusq = faBuscarPk(viIDTareaPadre);
-			if (oTareaBusq.get_sEstado()!="ER")
+			if (oTareaBusq.get_sEstado()!="ER"){
+				System.out.println("Debe Crear una Tarea Bug cuya Tarea Padre tenga Estado en Revision");
 				return false;
-			
+			}
+						
 		}
-		
-		
 		
 		return true;
 	}
