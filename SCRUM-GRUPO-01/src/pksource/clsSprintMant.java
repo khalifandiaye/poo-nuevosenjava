@@ -1,6 +1,4 @@
 package pksource;
-
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,8 +20,7 @@ public class clsSprintMant {
 			else
 				if (faBuscar(vsDescripcion) == null){		
 					clsSprint nuevoSprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
-					sprints.add(nuevoSprint);
-					System.out.println("Sprint Agregado");}		
+					sprints.add(nuevoSprint);}		
 				else
 					System.out.println("Sprint No Agregado");
 	}
@@ -50,9 +47,11 @@ public class clsSprintMant {
 				System.out.println("Debe grabar Fecha Inicio menor o igual a Fecha Final");	}
 		 	else
 		 		if (faBuscarPkPos(viIDSprint) != -1) {
-		 			clsSprint sprint = new clsSprint(viIDSprint,vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,viIDUsuarioCreacion,vdFechaCreacion,viIDUsuarioModificacion,vdFechaModificacion);
-		 			sprints.set(faBuscarPkPos(viIDSprint),sprint);
-		 			System.out.println("Sprint Editado");}
+		 			clsSprint oSprint_orig;
+					oSprint_orig = faBuscarPk(viIDSprint); 
+					clsSprint oUsuario_edit = new clsSprint(oSprint_orig.get_iIDSprint(),vsDescripcion,vdFechaInicio,vdFechaFin,viDuracionDias,vsEstado,vdPorcentajeAvance,oSprint_orig.get_iIDUsuarioCreacion(),oSprint_orig.get_dFechaCreacion(),viIDUsuarioModificacion,vdFechaModificacion);
+					sprints.set(faBuscarPkPos(viIDSprint),oUsuario_edit);
+					System.out.println("Usuario Editado");}
 		 		else
 		 			System.out.println("Sprint No Editado");		
 	}
