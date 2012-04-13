@@ -107,6 +107,15 @@ public class clsTareaMant {
 		}
         return i;
 	}
+	public String fsDescripcionTarea(int viIDTarea){
+		
+		clsTarea oBuscarTarea = faBuscarPk(viIDTarea);
+		if (oBuscarTarea!=null)
+			return oBuscarTarea.get_sDescripcion();
+		
+		return "";
+		
+	}
 	
 	public void pEditar(int viIDTarea,int viIDHistoria,String vsDescripcion,Date vdFechaInicio,
 			Date vdFechaFin,int viDuracionHoras,String vsEstado,String vsTipo,

@@ -40,10 +40,27 @@ public ArrayList<ClsUsuariosTarea> usuariostarea;
 	public void pAgregar(int viIDTarea,int viIDUsuario, 
 			Date vdFechaCreacion,Date vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
 		
+		if (faBuscarPk(viIDTarea,viIDUsuario) == null){
+			ClsUsuariosTarea nuevousuariotarea = new ClsUsuariosTarea(viIDTarea,viIDUsuario,
+					vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
+			
+			usuariostarea.add(nuevousuariotarea);
+			System.out.println("Usuario asignado a la tarea");
+		}		
+		
+		else
+			System.out.println("Usuario No asignado a la tarea");
+			
+		
 	}
 
 	public void pEliminar(int viIDTarea,int viIDUsuario){
-		
+		if (faBuscarPkPos(viIDTarea,viIDUsuario) != -1) {
+			usuariostarea.remove(faBuscarPkPos(viIDTarea,viIDUsuario));
+			System.out.println("Usuario eliminado de la tarea");
+		}
+		else
+			System.out.println("Usuario no eliminado de la tarea");
 	}
 
 }
