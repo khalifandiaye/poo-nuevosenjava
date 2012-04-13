@@ -48,9 +48,40 @@ public ArrayList<ClsUsuariosTarea> usuariostarea;
         return i;
 	}
 	
+	private boolean fbValidar(int viIDTarea,int viIDUsuario,clsTareaMant oTareaMant,clsUsuarioMant oUsuarioMant){
+		//DebeAsignarUsuarioaTareaExistente
+		if (oTareaMant.faBuscarPk(viIDTarea)==null){
+			System.out.println("Debe Asignar Usuario a Tarea Existente");
+			return false;
+		}
+			
+		
+		//DebeAsignarUsuarioaTareaenEstadoPendiente
+		clsTarea oTarea = oTareaMant.faBuscarPk(viIDTarea);
+		if (oTarea.get_sEstado()!="PD"){
+			System.out.println("Debe Asignar Usuario a Tarea en Estado Pendiente");
+			return false;
+		}
+			
+		
+		//DebeAsignarUsuarioExistenteaTarea
+		if (oUsuarioMant.faBuscarPk(viIDUsuario)==null){
+			System.out.println("Debe Asignar Usuario Existente a Tarea");
+			return false;
+		}
+			
+		
+		return true;
+	}
+
 	public void pAgregar(int viIDTarea,int viIDUsuario, 
+			clsTareaMant oTareaMant,
+			clsUsuarioMant oUsuarioMant,
 			Date vdFechaCreacion,Date vdFechaModificacion,int viIDUsuarioCreacion,int viIDUsuarioModificacion){
 		
+		if (fbValidar(viIDTarea,viIDUsuario,oTareaMant,oUsuarioMant)==false)
+			return;
+
 		if (faBuscarPk(viIDTarea,viIDUsuario) == null){
 			ClsUsuariosTarea nuevousuariotarea = new ClsUsuariosTarea(viIDTarea,viIDUsuario,
 					vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);
