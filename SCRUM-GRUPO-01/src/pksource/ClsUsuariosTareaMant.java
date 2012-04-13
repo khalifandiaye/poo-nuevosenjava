@@ -26,6 +26,13 @@ public ArrayList<ClsUsuariosTarea> usuariostarea;
         return null;
 	}
 	
+	public ClsUsuariosTarea faBuscarFk(int viIDUsuario){
+		for( ClsUsuariosTarea usuariotarea : usuariostarea)
+            if (usuariotarea.get_iIDUsuario() == viIDUsuario)
+                return usuariotarea;
+        return null;
+	}
+
 	public int faBuscarPkPos(int viIDTarea, int viIDUsuario){
 		int i = -1;
 		for (ClsUsuariosTarea usuariotarea : usuariostarea)
