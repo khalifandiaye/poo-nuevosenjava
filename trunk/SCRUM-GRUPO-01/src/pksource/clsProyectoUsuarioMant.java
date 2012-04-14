@@ -10,6 +10,18 @@ public class clsProyectoUsuarioMant {
 		proyectousuarios = new ArrayList<clsProyectoUsuario>();
 	}
 	
+	public void pListaProyectoUsuario (){
+		String sFormato;
+        sFormato = "|%1$-15s|%2$-15s|%3$-12s|%4$-10s|%5$-12s|%6$-10s|\n";
+    	System.out.println("\n[PROYECTO_USUARIO]");
+    	System.out.println("========================================================================================================================================");
+        System.out.format(sFormato,"IDProyecto","IDUsuario","F.Crea","U.Crea","F.Modif","U.Modif");
+    	System.out.println("========================================================================================================================================");
+    	for( clsProyectoUsuario oProyectoUsuario  : proyectousuarios)
+        System.out.format(sFormato,oProyectoUsuario.get_iIDProyecto(),oProyectoUsuario.get_iIDUsuario(),oProyectoUsuario.get_dFechaCreacion(),oProyectoUsuario.get_iIDUsuarioCreacion(),oProyectoUsuario.get_dFechaModificacion(),oProyectoUsuario.get_iIDUsuarioModificacion());    			
+    	System.out.println("========================================================================================================================================");		
+	}
+
 	public boolean pAgregar(int viIDProyecto, int viIDUsuario, String vdFechaCreacion, String vdFechaModificacion, int viIDUsuarioCreacion, int viIDUsuarioMoficacion){
 		if (faBuscarPk(viIDProyecto,viIDUsuario) == null){		
 			clsProyectoUsuario nuevoProyectoUsuario = new clsProyectoUsuario(viIDProyecto,viIDUsuario,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioMoficacion);
