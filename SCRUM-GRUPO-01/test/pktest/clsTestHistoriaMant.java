@@ -50,16 +50,16 @@ public class clsTestHistoriaMant {
 		adm.pRegistrarHistoria(2, 2, "Requerimiento 2", 2, 2, "A", 10, 0f,Fecha, 1, Fecha, 1);
 		adm.pRegistrarHistoria(3, 3, "Requerimiento 3", 3, 3, "A", 15, 0f,Fecha, 1, Fecha, 1);
 		//Proyectos
-		oProyectoMant.pAgregar(1, "GESTION DE PROVEEDORES", "WONG",	"03/03/2012", "03/03/2012", 1, 1);
-		oProyectoMant.pAgregar(2, "MODULO DE MANTENIMIENTO", "UPC",	"03/03/2012", "03/03/2012", 1, 1);
-		oProyectoMant.pAgregar(3, "CONTROL DE VISITAS", "SARITA COLONIA","03/03/2012", "03/03/2012", 1, 1);
+		oProyectoMant.pAgregar(1, "GESTION DE PROVEEDORES", "WONG",	"03-03-2012", "03-03-2012", 1, 1);
+		oProyectoMant.pAgregar(2, "MODULO DE MANTENIMIENTO", "UPC",	"03-03-2012", "03-03-2012", 1, 1);
+		oProyectoMant.pAgregar(3, "CONTROL DE VISITAS", "SARITA COLONIA","03-03-2012", "03-03-2012", 1, 1);
 		//Usuarios
-		oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","Leon","Alegria","Romulo",1,"03/03/2012","03/03/2012",1,1);				
-	    oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","Humala","Taso","Antauro",2,"03/03/2012","03/03/2012",1,1);				
-	    oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","Quimper","Herrera","Alberto",3,"03/03/2012","03/03/2012",1,1);				
-	    oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","Denegri","Santagadea","Marco Aurelio",1,"03/03/2012","03/03/2012",1,1);				
-	    oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","a",3,"03/03/2012","03/03/2012",1,1);				
-        oUsuarioMant.pAgregar(6,"kenji.fujimori@hotmail.com","Fujimori","Higuchi","Kenji",3,"03/03/2012","03/03/2012",1,1);
+		oUsuarioMant.pAgregar(1,"romulo.leon@gmail.com","Leon","Alegria","Romulo",1,"03-03-2012","03-03-2012",1,1);				
+	    oUsuarioMant.pAgregar(2,"antauro.humala@gmail.com","Humala","Taso","Antauro",2,"03-03-2012","03-03-2012",1,1);				
+	    oUsuarioMant.pAgregar(3,"alberto.quimper@hotmail.com","Quimper","Herrera","Alberto",3,"03-03-2012","03-03-2012",1,1);				
+	    oUsuarioMant.pAgregar(4,"marco.denegri@gmail.com","Denegri","Santagadea","Marco Aurelio",1,"03-03-2012","03-03-2012",1,1);				
+	    oUsuarioMant.pAgregar(5,"luis.cripiani@hotmail.com","Cipriani","Thorne","a",3,"03-03-2012","03-03-2012",1,1);				
+        oUsuarioMant.pAgregar(6,"kenji.fujimori@hotmail.com","Fujimori","Higuchi","Kenji",3,"03-03-2012","03-03-2012",1,1);
         //Tareas
         Calendar Cal = Calendar.getInstance();
         Cal.set(2012,3,7);Date vdFechaInicio=Cal.getTime();
@@ -258,8 +258,7 @@ public class clsTestHistoriaMant {
 		else
 		{
 			System.out.println("La Historia contiene tareas");
-		}
-		
+		}		
 	}
 	
 	@Test
