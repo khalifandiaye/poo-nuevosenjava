@@ -68,12 +68,12 @@ public class clsTestHistoriaMant {
         oTareaMant.pAgregar(1, 1, "Tarea 1",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
 		oTareaMant.pAgregar(2, 1, "Tarea 2",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	1, 0);
 		oTareaMant.pAgregar(3, 1, "Tarea 3",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
-		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
-		oTareaMant.pAgregar(7, 3, "Tarea 7",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
-		oTareaMant.pAgregar(8, 3, "Tarea 8",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
-		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(4, 2, "Tarea 4",vdFechaInicio,vdFechaFin, 36,	"TD", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(5, 2, "Tarea 5",vdFechaInicio,vdFechaFin, 36,	"TD", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(6, 2, "Tarea 6",vdFechaInicio,vdFechaFin, 36,	"ER", "N",0,0,vdFechaCreacion,null,	4, 0);
+		oTareaMant.pAgregar(7, 3, "Tarea 7",vdFechaInicio,vdFechaFin, 36,	"ER", "N",0,0,vdFechaCreacion,null,	2, 0);
+		oTareaMant.pAgregar(8, 3, "Tarea 8",vdFechaInicio,vdFechaFin, 36,	"EP", "N",0,0,vdFechaCreacion,null,	3, 0);
+		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"EP", "N",0,0,vdFechaCreacion,null,	4, 0);
 	}
 
 	@Test
@@ -326,8 +326,7 @@ public class clsTestHistoriaMant {
 					{				
 						if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
 						{					
-							System.out.format(sFormato,tarea.get_sDescripcion(),adm.fsFormatoFecha(tarea.get_dFechaInicio()),adm.fsFormatoFecha(tarea.get_dFechaFin()),tarea.get_iDuracionHoras(),tarea.get_sEstado());
-						 
+							System.out.format(sFormato,tarea.get_sDescripcion(),adm.fsFormatoFecha(tarea.get_dFechaInicio()),adm.fsFormatoFecha(tarea.get_dFechaFin()),tarea.get_iDuracionHoras(),tarea.get_sEstado());						 
 						}			
 					}	
 				}
@@ -335,4 +334,42 @@ public class clsTestHistoriaMant {
 	    }
 		 System.out.println("====================================================================================================================================================");
 	}
+	
+	@Test
+	public void ListaTareasEstado()
+	{
+		
+		String estado="PD";
+		
+		ArrayList<clsHistoria> historias;
+		historias=adm.historias;
+		ArrayList<clsTarea> tareas;
+		tareas=oTareaMant.tareas;
+		
+		String sFormato;
+		System.out.println("\n[LISTA DE TAREAS POR ESTADO]");
+		sFormato = "|%1$-20s|%2$-30s|%3$-30s|%4$-30s|%5$-30s|\n";
+	    System.out.println("\n[HISTORIAS]");
+	    System.out.println("====================================================================================================================================================");
+	   
+	    
+		for (clsHistoria historia : historias) 
+		{		
+			System.out.println("\n HISTORIA:"+historia.getvDescripcion());
+			 System.out.format(sFormato,"TAREA","FECHA INICIO","FECHA FIN","DURACION","ESTADO");
+			for (clsTarea tarea : tareas)
+			{				
+				if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
+				{		
+					if (tarea.get_sEstado().equals(estado))
+					{
+						System.out.format(sFormato,tarea.get_sDescripcion(),adm.fsFormatoFecha(tarea.get_dFechaInicio()),adm.fsFormatoFecha(tarea.get_dFechaFin()),tarea.get_iDuracionHoras(),tarea.get_sEstado());
+					}
+				 
+				}			
+			}		    	
+		}
+		 System.out.println("====================================================================================================================================================");
+	}
 }
+
