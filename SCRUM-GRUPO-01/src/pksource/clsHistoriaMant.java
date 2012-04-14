@@ -142,4 +142,11 @@ public class clsHistoriaMant {
 	{
 		return historias;
 	}
+	
+	public String fsFormatoFecha(Date vdFecha)
+	{
+		java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("dd/MM/yyyy");
+		String vsFecha=sdf.format(vdFecha);
+		return vsFecha;
+	}
 }
