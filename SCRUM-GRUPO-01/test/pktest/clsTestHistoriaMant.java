@@ -154,7 +154,7 @@ public class clsTestHistoriaMant {
 
 		// Registra, valida que no exista y que se hayan ingresado los datos
 		// necesarios.
-		if (!oUsuarioMant.faBuscarPk(iIDUsuarioCreacion).equals(null)) {
+		if (oUsuarioMant.faBuscarPk(iIDUsuarioCreacion)!=null) {
 			assertTrue(adm.pRegistrarHistoria(iIDhistoria, iIdProducto,vDescripcion,
 					iOrdenPrioridadEstimada, iOrdenPrioridadReal, cEstado,
 					iDuracionDias, fCosto,dFechaCreacion,iIDUsuarioCreacion,dFechaModificacion,iIDUsuarioModificacion));
@@ -288,7 +288,7 @@ public class clsTestHistoriaMant {
 			{				
 				if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
 				{					
-					System.out.format(sFormato,tarea.get_sDescripcion(),tarea.get_dFechaInicio(),tarea.get_dFechaFin(),tarea.get_iDuracionHoras(),tarea.get_sEstado());
+					System.out.format(sFormato,tarea.get_sDescripcion(),adm.fsFormatoFecha(tarea.get_dFechaInicio()),adm.fsFormatoFecha(tarea.get_dFechaFin()),tarea.get_iDuracionHoras(),tarea.get_sEstado());
 				 
 				}			
 			}		    	
@@ -326,7 +326,7 @@ public class clsTestHistoriaMant {
 					{				
 						if (historia.getiIDhistoria()==tarea.get_iIDHistoria())
 						{					
-							System.out.format(sFormato,tarea.get_sDescripcion(),tarea.get_dFechaInicio(),tarea.get_dFechaFin(),tarea.get_iDuracionHoras(),tarea.get_sEstado());
+							System.out.format(sFormato,tarea.get_sDescripcion(),adm.fsFormatoFecha(tarea.get_dFechaInicio()),adm.fsFormatoFecha(tarea.get_dFechaFin()),tarea.get_iDuracionHoras(),tarea.get_sEstado());
 						 
 						}			
 					}	
