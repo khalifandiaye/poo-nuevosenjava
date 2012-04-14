@@ -60,10 +60,10 @@ public class clsTestUsuarioMant {
 		oTareaMant.pAgregar(7, 3, "Tarea 7",vdFechaInicio,vdFechaFin, 24,	"PD", "N",0,0,vdFechaCreacion,null,	2, 0);
 		oTareaMant.pAgregar(8, 3, "Tarea 8",vdFechaInicio,vdFechaFin, 48,	"PD", "N",0,0,vdFechaCreacion,null,	3, 0);
 		oTareaMant.pAgregar(9, 3, "Tarea 9",vdFechaInicio,vdFechaFin, 36,	"PD", "N",0,0,vdFechaCreacion,null,	4, 0);
-		oUsuariosTareaMant.pAgregar(1, 1, vdFechaCreacion, null, 1, 0);
-		oUsuariosTareaMant.pAgregar(1, 2, vdFechaCreacion, null, 1, 0);
-		oUsuariosTareaMant.pAgregar(2, 3, vdFechaCreacion, null, 1, 0);
-		oUsuariosTareaMant.pAgregar(2, 4, vdFechaCreacion, null, 1, 0);
+		oUsuariosTareaMant.pAgregar(1, 1, oTareaMant, oUsuarioMant,vdFechaCreacion, null, 1, 0);
+		oUsuariosTareaMant.pAgregar(1, 2, oTareaMant, oUsuarioMant,vdFechaCreacion, null, 1, 0);
+		oUsuariosTareaMant.pAgregar(2, 3, oTareaMant, oUsuarioMant,vdFechaCreacion, null, 1, 0);
+		oUsuariosTareaMant.pAgregar(2, 4, oTareaMant, oUsuarioMant,vdFechaCreacion, null, 1, 0);
 
         
         //Usuario
