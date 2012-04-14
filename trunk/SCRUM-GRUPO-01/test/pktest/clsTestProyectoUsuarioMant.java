@@ -74,6 +74,10 @@ public class clsTestProyectoUsuarioMant {
 
     	//Proyectos
         oProyectoMant.pListaProyectos();
+
+        //ProyectoUsuario
+        oProyectoUsuarioMant.pListaProyectoUsuario();
+
         
         //Tareas
     	sFormato = "|%1$-4s|%2$-30s|%3$-30s|%4$-30s|%5$-20s|%6$-12s|%7$-10s|\n";
@@ -113,6 +117,7 @@ public class clsTestProyectoUsuarioMant {
         //Assert
         assertEquals(true,boAgrega);
         System.out.println("<<Resultados>>");
+        oProyectoUsuarioMant.pListaProyectoUsuario();
         
            }
 	@Test
@@ -131,10 +136,10 @@ public class clsTestProyectoUsuarioMant {
         //Assert
         assertEquals(false,boAgrega);
         System.out.println("<<Resultados>>");
+        oProyectoUsuarioMant.pListaProyectoUsuario();
         
            }
 
-	
 	@Test
     public void DebeQuitarUsuarioDelProyecto(){
         System.out.println("");
@@ -143,27 +148,30 @@ public class clsTestProyectoUsuarioMant {
         // Arrange
         // Valores para la primera asociacion
         int viIDProyecto = 1;
-        int viIDUsuario = 1;
-    	String vdFechaCreacion = "05/04/2012";
-    	String vdFechaModificacion = "05/04/2012";
-    	int viIDUsuarioCreacion = 3;
-    	int viIDUsuarioModificacion = 3;    	
-        // Valores para la segunda asociacion
-        int viIDProyecto2 = 1;
-        int viIDUsuario2 = 2;
-    	String vdFechaCreacion2 = "05/04/2012";
-    	String vdFechaModificacion2 = "05/04/2012";
-    	int viIDUsuarioCreacion2 = 3;
-    	int viIDUsuarioModificacion2 = 3;    	
-
-    	clsProyectoUsuarioMant oProyectoMant = new clsProyectoUsuarioMant();
+        int viIDUsuario = 5;
         // Act
-        oProyectoMant.pAgregar(viIDProyecto,viIDUsuario,vdFechaCreacion,vdFechaModificacion,viIDUsuarioCreacion,viIDUsuarioModificacion);    
-        oProyectoMant.pAgregar(viIDProyecto2,viIDUsuario2,vdFechaCreacion2,vdFechaModificacion2,viIDUsuarioCreacion2,viIDUsuarioModificacion2);    
-        oProyectoMant.pEliminar(viIDProyecto,viIDUsuario);    
-        //Assert
-        clsProyectoUsuario oProyecto = oProyectoMant.faBuscarPk(viIDProyecto,viIDUsuario);        
-        assertNull(oProyecto); // no encuentra elemento borrado              
+        boolean boElimina = oProyectoUsuarioMant.pEliminar(viIDProyecto,viIDUsuario,oUsuariosTareaMant);    
+        //Assert                
+        assertEquals(true,boElimina); // no encuentra elemento borrado   
+        System.out.println("<<Resultados>>");
+        oProyectoUsuarioMant.pListaProyectoUsuario();
+    }
+	
+	@Test
+    public void NoDebeQuitarUsuarioDelProyecto(){
+        System.out.println("");
+        System.out.println("Eliminacion de usuario del proyecto");
+        System.out.println("===================================");
+        // Arrange
+        // Valores para la primera asociacion
+        int viIDProyecto = 1;
+        int viIDUsuario = 3;
+        // Act
+        boolean boElimina = oProyectoUsuarioMant.pEliminar(viIDProyecto,viIDUsuario,oUsuariosTareaMant);    
+        //Assert                
+        assertEquals(false,boElimina); // no encuentra elemento borrado              
+        System.out.println("<<Resultados>>");
+        oProyectoUsuarioMant.pListaProyectoUsuario();
     }
 
 }
